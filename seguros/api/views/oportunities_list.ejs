@@ -1,0 +1,1101 @@
+﻿<!doctype html>
+<html class="no-js h-100" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
+	<!--<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
+	
+	<meta name="author" content="Vincent Queimado">
+	<meta name="description" content="Desafio de criação de API para cotação de seguro.">
+	
+    <title>Sistema de Gestão para Corretoras de Seguros</title>
+	
+	<!--[if IE]><link rel="shortcut icon" href="static/images/icosegbike.ico"><![endif]-->
+	<link rel="icon" href="../../static/images/icosegbike.png">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../../static/styles/plugins/components.css">
+	<link rel="stylesheet" type="text/css" href="../../static/styles/plugins/icons/icomoon/styles.css">
+	<link rel="stylesheet" type="text/css" type="text/css"  href="../../static/styles/app/shards-dashboards.1.1.0.min.css">
+    <link rel="stylesheet" type="text/css" href="../../static/styles/app/extras.1.1.0.min.css">
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+	<script async defer src="../../static/scripts/moment.min.js"></script>
+  </head>
+  
+  <body class="h-100">
+ 
+
+    <div class="container-fluid">
+	
+      <div class="row">
+      <!-- Main Sidebar -->
+               <aside class="main-sidebar col-12 col-md-3 col-lg-2 px-0">
+          <div class="main-navbar">
+            <nav style="background-color: #0593CC!important; border-bottom: 1px solid #1299d0!important; " class="navbar align-items-stretch navbar-light bg-white flex-md-nowrap border-bottom p-0">
+              <a class="navbar-brand w-100 mr-0" href="#" style="color:#fff; line-height: 25px;">
+                <div class="d-table m-auto">
+                  <img id="main-logo" class="d-inline-block align-top mr-1" style="height: 40px; padding-right: 10px; padding-left: 10px;" src="../../static/images/app/LogoSegBike.png" alt="BikeSeguros">
+                 <!--<span style="font-size: .9rem;"  class=" d-md-inline ml-1">MENU PRINCIPAL</span>-->
+                </div>
+              </a>
+              <a style="color:#fff;" class="toggle-sidebar d-sm-inline d-md-none d-lg-none">
+                <i style="top: 0px;" class="material-icons">&#xE5C4;</i>
+              </a>
+            </nav>
+          </div>
+
+          <div class="nav-wrapper">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link " href="/seguros/app/dashboard">
+                  <i class="material-icons">home</i>
+                  <span>Início</span>
+                </a>
+              </li>
+			  
+			  <li class="nav-item">
+                <a class="nav-link " href="/seguros/app/oportunities_new">
+                  <i class="material-icons">add</i>
+                  <span>Nova Oportunidade</span>
+                </a>
+              </li>
+			  
+			  <li class="nav-item">
+                <a class="nav-link active" href="/seguros/app/oportunities_list">
+                  <i class="material-icons">monetization_on</i>
+                  <span>Oportunidades</span>
+                </a>
+              </li>
+			  
+			  <li class="nav-item">
+                <a class="nav-link " href="/seguros/app/insured_list">
+                  <i class="material-icons">people</i>
+                  <span>Segurados</span>
+                </a>
+              </li>
+	
+              <li class="nav-item">
+                <a class="nav-link " href="/seguros/app/insurances_list">
+                  <i class="material-icons">verified_user</i>
+                  <span>Seguradoras</span>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link " href="/seguros/app/profile">
+                  <i class="material-icons">account_circle</i>
+                  <span>Minha Conta</span>
+                </a>
+              </li>
+			  
+              <li class="nav-item">
+                <a class="nav-link " href="/seguros/app/support">
+                  <i class="material-icons">contact_support</i>
+                  <span>Suporte</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </aside>
+        <!-- End Main Sidebar -->
+        <main class="main-content col-lg-10 col-md-9 col-sm-12 p-0 offset-lg-2 offset-md-3">
+          <div class="main-navbar sticky-top bg-white">
+            <!-- Main Navbar -->
+             <nav style="flex-wrap: nowrap!important;" class="navbar  navbar-light flex-md-nowrap p-0">
+					   <a class="navbar-brand w-100 mr-0" href="#" style="color:#fff; line-height: 25px;">
+					<div style="color:#3d5170; margin-left: 18px!important;" class="d-table m-auto">
+					  <img id="main-logo" class="d-inline-block align-top mr-1" style="height: 30px; padding-right: 10px; padding-left: 10px;" src="../../static/images/app/LogoSegBike2.png" alt="Bike Seguros">
+					 <!--<i class="material-icons">web</i> <span class=" d-md-inline ml-1">PAINEL DE GESTÃO </span>-->
+					</div>
+				  </a>
+              <ul class="navbar-nav border-left flex-row ">
+              </ul>
+              <nav class="nav">
+                <a href="#" class="nav-link nav-link-icon toggle-sidebar d-md-inline d-lg-none text-center border-left" data-toggle="collapse" data-target=".header-navbar" aria-expanded="false" aria-controls="header-navbar">
+                  <i class="material-icons">&#xE5D2;</i>
+                </a>
+              </nav>
+            </nav>
+          </div>
+          <!-- / .main-navbar -->
+          <div class="main-content-container container-fluid px-4">
+            <!-- Page Header -->
+            <div class="page-header row no-gutters py-4">
+              <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+                <i style="font-size: 0.95rem;" class="material-icons">monetization_on</i> <span style="font-size: 1rem;" class="text-uppercase page-subtitle">OPORTUNIDADES</span>
+				<!--<h3 class="page-title"></h3>-->
+              </div>
+            </div>
+            <!-- End Page Header -->
+			
+			
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 mb-2">
+					
+					<!-- <div class="bg-primary rounded text-white text-center p-3" style="box-shadow: inset 0 0 5px rgba(0,0,0,.2);"> <i class="material-icons">add</i> Nova Oportunidade</div> -->
+					<a href="/seguros/app/oportunities_new" class="mb-2 btn btn-primary mr-1">
+						<i class="material-icons">add</i> Nova Oportunidade
+					</a>
+				</div>
+			</div>
+			  
+			  
+           
+            <!-- Default Light Table -->
+            <div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 mb-4">
+                <div class="card card-small blog-comments">
+                  <div class="card-header border-bottom">
+                    <h6 class="m-0">Lista de Oportunidades</h6>
+                  </div>
+				  <div id="oportunities" class="card-body p-0">
+					
+					
+						<div class="blog-comments__item d-flex p-3">
+							<div class="blog-comments__content">
+								<div style="font-size: 0.8rem;" class="blog-comments__meta text-muted">
+									Carregando oportunidades...
+								</div>
+							</div>
+						</div>
+				  </div>
+                  <div class="card-footer border-top">
+                    <!-- <div class="row"> -->
+                      <!-- <div class="col text-center view-report"> -->
+                        <!-- <button type="submit" class="btn btn-white">Top</button> -->
+                      <!-- </div> -->
+                    <!-- </div> -->
+					   <div class="col text-right view-report">
+                        <a href="#">Top &uarr;</a>
+                      </div>
+                  </div>
+                </div>
+              </div>
+			  
+            </div>
+            <!-- End Default Light Table -->
+			
+			 <!-- Vertical form modal -->
+				<div style="z-index: 1090;" id="modal_form_questions" class="modal fade" tabindex="-1">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title">Formulário de Seguro</h5>
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+							</div>
+
+							<form id="formQuestions" action="#">
+								<div class="modal-body">
+								
+									<div class="form-row">
+										<div class="form-group col-md-12">
+											<label id="lbl_question1" class="d-block" >Você possue acessoria esportiva?</label>
+										</div>
+									</div>
+						
+									<div class="form-row">
+
+										<div class="form-group col-md-3">
+											<div class="custom-control custom-radio mb-1" style="display:inline-block">
+												<input type="radio" id="question1-1" name="insurance_form[accessory]" class="custom-control-input" value="yes">
+												<label class="custom-control-label" for="question1-1">Sim</label>
+											</div>
+										</div>
+								
+										<div class="form-group col-md-3">
+											<div class="custom-control custom-radio mb-1" style="display:inline-block">
+												<input type="radio" id="question1-2" name="insurance_form[accessory]" class="custom-control-input" value="no">
+												<label class="custom-control-label" for="question1-2">Não</label>
+											</div>
+										</div>
+							
+										<div class="form-group col-md-3">
+											<div class="custom-control custom-radio mb-1" style="display:inline-block">
+												<input type="radio" id="question1-3" name="insurance_form[accessory]" class="custom-control-input" value="na">
+												<label class="custom-control-label" for="question1-3">N/A</label>
+											</div>
+										</div>
+										
+										<label style="margin-top: -15px; margin-bottom: 15px; margin-left: 7px;" id="question1-error" for="question1" class="validation-invalid-label" ></label>
+							
+									</div>
+						
+									<div class="form-row">
+										<div class="form-group col-md-12">
+											<label id="lbl_question2" class="d-block" >Qual é a frequência que você pedala em uma semana?</label>
+										</div>
+									</div>
+						
+									<div class="form-row">
+
+										<div class="form-group col-md-3">
+											<div class="custom-control custom-radio mb-1" style="display:inline-block">
+											  <input type="radio" id="question2-1" name="insurance_form[frequency]" class="custom-control-input" value="1-2">
+											  <label class="custom-control-label" for="question2-1">1 a 2</label>
+											</div>
+										</div>
+								
+										<div class="form-group col-md-3">
+											<div class="custom-control custom-radio mb-1" style="display:inline-block">
+											  <input type="radio" id="question2-2" name="insurance_form[frequency]" class="custom-control-input" value="3-4">
+											  <label class="custom-control-label" for="question2-2">3 a 4</label>
+											</div>
+										</div>
+								
+										<div class="form-group col-md-3">
+											<div class="custom-control custom-radio mb-1" style="display:inline-block">
+											  <input type="radio" id="question2-3" name="insurance_form[frequency]" class="custom-control-input" value="5-7">
+											  <label class="custom-control-label" for="question2-3">5 a 7</label>
+											</div>
+										</div>
+									
+										<label style="margin-top: -15px; margin-bottom: 15px; margin-left: 7px;" id="question2-error" for="question2" class="validation-invalid-label" ></label>
+									
+									</div>
+						
+									<div class="form-row">
+										<div class="form-group col-md-12">
+											<label id="lbl_question3" class="d-block" >Você participa de alguma competição?</label>
+										</div>
+									</div>
+						
+									<div class="form-row">
+
+										<div class="form-group col-md-3">
+											<div class="custom-control custom-radio mb-1" style="display:inline-block">
+											  <input type="radio" id="question3-1" name="insurance_form[competition]" class="custom-control-input" value="yes">
+											  <label class="custom-control-label" for="question3-1">Sim</label>
+											</div>
+										</div>
+										
+										<div class="form-group col-md-3">
+											<div class="custom-control custom-radio mb-1" style="display:inline-block">
+											  <input type="radio" id="question3-2" name="insurance_form[competition]" class="custom-control-input" value="no">
+											  <label class="custom-control-label" for="question3-2">Não</label>
+											</div>
+										</div>
+										
+										<div class="form-group col-md-3">
+											<div class="custom-control custom-radio mb-1" style="display:inline-block">
+											  <input type="radio" id="question3-3" name="insurance_form[competition]" class="custom-control-input" value="na">
+											  <label class="custom-control-label" for="question3-3">N/A</label>
+											</div>
+										</div>
+										
+										<label style="margin-top: -15px; margin-bottom: 15px; margin-left: 7px;" id="question3-error" for="question3" class="validation-invalid-label" ></label>
+										
+									</div>
+					
+											
+									<div class="form-row">
+										<div class="form-group col-md-12">
+											<label id="lbl_question4" class="d-block" >Quais locais você mais pedala?</label>
+										</div>
+									</div>
+						
+									<div class="form-row">
+						
+										<div class="form-group col-md-3">
+											<div class="custom-control custom-toggle custom-toggle-sm mb-1">
+												<input type="checkbox" id="option1" name="insurance_form[options][road]" class="custom-control-input" value="yes">
+												<label class="custom-control-label" for="option1">Estrada</label>
+											</div>
+										</div>
+										
+										<div class="form-group col-md-3">
+											<div class="custom-control custom-toggle custom-toggle-sm mb-1">
+												<input type="checkbox" id="option2" name="insurance_form[options][city]" class="custom-control-input" value="yes">
+												<label class="custom-control-label" for="option2">Cidade</label>
+											</div>
+										</div>
+										
+										<div class="form-group col-md-3">
+											<div class="custom-control custom-toggle custom-toggle-sm mb-1">
+												<input type="checkbox" id="option3" name="insurance_form[options][field]" class="custom-control-input" value="yes">
+												<label class="custom-control-label" for="option3">Campo</label>
+											</div>
+										</div>
+										
+										<div class="form-group col-md-3">
+											<div class="custom-control custom-toggle custom-toggle-sm mb-1">
+												<input type="checkbox" id="option4" name="insurance_form[options][track]" class="custom-control-input" value="yes">
+												<label class="custom-control-label" for="option4">Trilhas</label>
+											</div>
+										</div>
+							
+										<label style="display:none; margin-top: -15px; margin-bottom: 15px; margin-left: 7px;" id="options-error" for="options" class="validation-invalid-label" >Selecione pelo menos uma opção de local</label>
+							
+									</div>
+								
+								
+								
+								</div>
+
+								<div class="modal-footer">
+									<button type="button" class="btn btn-link" data-dismiss="modal">Cancelar</button>
+									<button type="submit" class="btn bg-primary">Salvar</button>
+								</div>
+							</form>
+							
+						</div>
+					</div>
+				</div>
+				<!-- /vertical form modal -->
+				
+				 <!-- Vertical form modal -->
+				<div style="z-index: 1090;" id="modal_form_quote" class="modal fade" tabindex="-1">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title">Cotação de Seguro</h5>
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+							</div>
+
+							<form id="formQuote" action="#">
+								<div class="modal-body">
+								
+									<div class="form-row">
+										<div class="form-group col-md-12">
+											<label for="quote_insurance">Seguradora</label>
+											<select id="quote_insurance" name="quotation[insurance]" class="form-control required">
+											</select>
+										</div>
+									</div>
+									
+									<div id="form_quote_payment" style="display:none;" class="form-row">
+										<div class="form-group col-md-12">
+											<input id="quote_prime" style="display:none;"  name="quotation[prime]" type="text" class="form-control required"  placeholder="" value="" maxlength="20"> 
+											
+											<label for="quote_payment">Parcelas de Pagamento</label>
+											<select id="quote_payment" name="quotation[payment]" class="form-control required">
+											</select>
+										</div>
+									</div>
+									
+									<div id="quote_insurance_chosed" style="display:none; padding-right:0px; padding-left:0px;" class="col-lg-12 col-md-12 col-sm-12 mb-12">
+									<div class="card card-small card-post card-post--1">
+									  <div  class="card-post__image" style="min-height: 90px; background-image: url('../../static/images/app/content-management/2.jpg');">
+										<a id="quote_insurance_title" href="#" class="card-post__category badge badge-pill badge-info"></a>
+										<div class="card-post__author d-flex">
+										</div>
+									  </div>
+									  <div class="card-body">
+										<!--<h5 class="card-title">
+										  <a class="text-fiord-blue" href="#">Descrição do Seguro... </a>
+										</h5>-->
+										<div class="" style="display: block !important; margin-bottom: 0px; font-size: 12px; font-weight: normal;">Indenizações:</div>
+										<div id="quote_insurance_risk_coverage" class="" style="display: block !important; margin-bottom: 4px;font-size: 12px; font-weight: normal;"></div>
+										
+										<div class="" style="display: block !important; margin-bottom: 0px; font-size: 12px; font-weight: normal;">Cobertura:</div>
+										<div id="quote_insurance_geographical_coverage" class="" style="display: block !important; margin-bottom: 4px; font-size: 12px; font-weight: normal;"></div>
+										
+										<div class="" style="display: block !important; margin-bottom: 0px; font-size: 12px; font-weight: bold;">Prêmio:</div>
+										<div id="quote_insurance_prime" class="card-text d-inline-block mb-3" style="display: block !important; margin-bottom: 2px; font-size: 13px; font-weight: bold;"></div>
+									
+									  </div>
+									</div>
+								  </div>
+								
+								
+								</div>
+
+								<div class="modal-footer">
+									<button type="button" class="btn btn-link" data-dismiss="modal">Cancelar</button>
+									<button type="submit" class="btn bg-primary">Salvar</button>
+								</div>
+							</form>
+							
+						</div>
+					</div>
+				</div>
+				<!-- /vertical form modal -->
+     
+          </div>
+          <footer class="main-footer d-flex p-2 px-3 bg-white border-top">
+            <ul class="nav">
+              
+            </ul>
+            <span class="copyright ml-auto my-auto mr-2">Painel de gestão - Desafio vSales 2019
+              <a href="" rel="nofollow"></a>
+            </span>
+          </footer>
+        </main>
+      </div>
+    </div>
+   
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+    <script src="https://unpkg.com/shards-ui@latest/dist/js/shards.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sharrre/2.0.1/jquery.sharrre.min.js"></script>
+    <script src="../../static/scripts/app/extras.1.1.0.min.js"></script>
+    <script src="../../static/scripts/app/shards-dashboards.1.1.0.min.js"></script> 
+
+    <!-- <script src="../../static/scripts/app/app/app-blog-overview.1.1.0.js"></script> -->
+	<script src="../../static/plugins/bootbox/bootbox.js"></script> 
+	<script src="../../static/scripts/moment.min.js"></script>
+	<script src="../../static/scripts/app/jquery.mask.min.js"></script>
+	<script src="../../static/plugins/wizard/steps.min.js"></script>
+	<script src="../../static/plugins/validation/validate.min.js"></script>
+	
+	<script>
+	
+		$(document).ready(function () {
+			getOportunitiesList();
+		});
+		
+		var oportunity_selected;
+		var bike_selected;
+		
+		function getOportunitiesList(){
+			$.ajax({ 
+				type: 'GET', 
+				url: 'http://everguard.com.br:9090/seguros/api/oportunities/list_pending', 
+				//data: { get_param: 'value' }, 
+				dataType: 'json',
+				success: function (data) { 
+					var i = 1;
+					$('#oportunities').empty();
+					
+					$.each(data, function(index, element) {
+						
+						var oportunity_id = element._id;
+						var oportunity_date = moment(element.oportunity.created_date).format("DD/MM/YYYY HH:mm");
+						var oportunity_form	= element.oportunity.insuranceform;
+						var oportunity_insurance = element.oportunity.insurance;
+						
+						var client_id = element.oportunity.client;
+						var client_name = '';
+						var client_city = '';
+						var client_state = '';
+						
+						var bike_id = element.oportunity.bike;
+						var bike_type = '';
+						var bike_value = '';
+						
+						getBikeDatas(bike_id, function(bikeDatas){
+							bike_type = bikeDatas.bike.type;
+							bike_value = bikeDatas.bike.value;
+							
+							getClientDatas(client_id,function(clientDatas){
+								client_name = clientDatas.client.name;
+								client_city = clientDatas.client.address.city;
+								client_state = clientDatas.client.address.state;
+								
+								addOportunityLine(oportunity_id, oportunity_date, client_id, client_name, client_city, client_state, bike_id, bike_type, bike_value, oportunity_form, oportunity_insurance);
+							});
+						});
+
+						i++;
+					
+					});
+					
+					if (i == 1){
+						var line = "<div class='blog-comments__item d-flex p-3'>"+
+							"<div class='blog-comments__content'>"+
+								"<div style='font-size: 0.8rem;' class='blog-comments__meta text-muted'>"+
+									"Nenhuma oportunidade encontrada!"+
+								"</div>"+
+							"</div>"+
+						"</div>";
+					}
+					$('#oportunities').append(line);
+					
+				}
+			});
+		}
+		
+		function getBikeDatas(id, datas){
+			$.ajax({ 
+				type: 'GET', 
+				url: 'http://everguard.com.br:9090/seguros/api/bikes/view/'+id, 
+				dataType: 'json',
+				success: function (data) { 
+					datas(data);
+				}
+			});
+		}
+		
+		function getClientDatas(id, datas){
+			$.ajax({ 
+				type: 'GET', 
+				url: 'http://everguard.com.br:9090/seguros/api/clients/view/'+id, 
+				dataType: 'json',
+				success: function (data) { 
+					datas(data);
+				}
+			});
+		}
+		
+		function getInsuranceDatas(id, datas){
+			$.ajax({ 
+				type: 'GET', 
+				url: 'http://everguard.com.br:9090/seguros/api/insurances/view/'+id, 
+				dataType: 'json',
+				success: function (data) { 
+					datas(data);
+				}
+			});
+		}
+		
+		function getInsurancesList(datas){
+			$.ajax({ 
+				type: 'GET', 
+				url: 'http://everguard.com.br:9090/seguros/api/insurances/list', 
+				dataType: 'json',
+				success: function (data) { 
+					datas(data);
+				}
+			});
+		}
+		
+		function viewOportunity(id, client){
+			alert('Deseja visualizar os detalhes da oportundiade de ' + client + ' ?');
+			
+			$.ajax({ 
+				type: 'PUT', 
+				url: 'http://everguard.com.br:9090/seguros/api/oportunities/view/'+id, 
+				//data: { get_param: 'value' }, 
+				dataType: 'json',
+				success: function (data) { 
+					alert('Visualizar cliente!');
+				}
+			});
+		
+		}
+		
+		function editBike(id, client){
+			alert('Deseja editar a oportunidade de  ' + client + ' ?');
+			
+			$.ajax({ 
+				type: 'PUT', 
+				url: 'http://everguard.com.br:9090/seguros/api/bike/edit/'+id, 
+				//data: { get_param: 'value' }, 
+				dataType: 'json',
+				success: function (data) { 
+					alert('Editar Bike!');
+				}
+			});
+		
+		}
+		
+		function delOportunity(oportunity_id, bike_id, client_id, client_name){
+			
+			bootbox.confirm({
+                title: 'Confirmação',
+                message: 'Deseja exluir definitivamente a oportunidade de ' + client_name + ' ?',
+                buttons: {
+                    confirm: {
+                        label: 'Sim',
+                        className: 'btn-primary'
+                    },
+                    cancel: {
+                        label: 'Não',
+                        className: 'btn-link'
+                    }
+                },
+                callback: function (result) {
+
+					if (result){
+					
+						$.ajax({ 
+							type: 'DELETE', 
+							url: 'http://everguard.com.br:9090/seguros/api/bikes/delete/'+ bike_id, 
+							dataType: 'json',
+							success: function (data) { 
+
+								$.ajax({ 
+									type: 'DELETE', 
+									url: 'http://everguard.com.br:9090/seguros/api/clients/delete/'+ client_id, 
+									dataType: 'json',
+									success: function (data) { 
+										
+										$.ajax({ 
+											type: 'DELETE', 
+											url: 'http://everguard.com.br:9090/seguros/api/oportunities/delete/'+ oportunity_id, 
+											dataType: 'json',
+											success: function (data) { 
+												
+												bootbox.alert({
+													title: 'Confirmação',
+													message: 'A oportunidade do cliente ' + client_name + ' foi excluida com sucesso!'
+												});
+												
+												getOportunitiesList();
+											}
+										});
+	
+	
+									}
+								});
+	
+							}
+						});
+
+						
+						
+					}
+					
+	
+                }
+            });
+			
+		}
+		
+ 
+		
+		function accepted(id, client){
+			alert('O cliente ' + client + ' deseja realmente aprovar a cotação?');
+			
+			$.ajax({ 
+				type: 'PUT', 
+				url: 'http://everguard.com.br:9090/seguros/api/oportunities/accepted/'+id, 
+				//data: { get_param: 'value' }, 
+				dataType: 'json',
+				success: function (data) { 
+					alert('Cliente segurado!');
+					getOportunitiesList();
+				}
+			});
+		
+		}
+		
+		function recused(id, client){
+			alert('O cliente ' + client + ' deseja realmente recusar a cotação?');
+			
+			$.ajax({ 
+				type: 'PUT', 
+				url: 'http://everguard.com.br:9090/seguros/api/oportunities/refused/'+id, 
+				//data: { get_param: 'value' }, 
+				dataType: 'json',
+				success: function (data) { 
+					alert('Cotação exluida das oportunidades!');
+					getOportunitiesList();
+				}
+			});
+		}
+		
+		function addOportunityLine(oportunity_id, oportunity_date, client_id, client_name, client_city, client_state, bike_id, bike_type, bike_value, oportunity_form, oportunity_insurance){
+			
+			var html_bloc = '';
+			var html_answered = '';
+			var html_quoted = '';
+			var answered = '';
+			var quoted = '';
+			
+			if (oportunity_form){
+				html_answered = '';
+				answered = '<span style="color:green;">PREENCHIDO</span>';
+			}else{
+				html_answered = "<div style='margin-bottom: 5px;width: 100%;' class='btn-group btn-group-sm'>"+
+								"<button style='width: 100%;' type='button' class='btn btn-outline-secondary' onclick='showFormQuestion(\"" + oportunity_id + "\" )'>"+
+								  "<span class='text-light'>"+
+									"<i style='top: 1px;' class='material-icons'>live_help</i> "+
+								  "</span> PREENCHER FORMULÁRIO </button>"+
+								 
+							"</div>";
+				answered = '<span style="color:red;">PENDENTE</span>';
+			}
+			
+			if (oportunity_insurance){
+				quoted = '<span style="color:green;">COTADO</span>';
+				html_quoted	= 	"<div style='width: 100%;' class='btn-group btn-group-sm'>"+
+									"<button style='width: 50%;' type='button' class='btn btn-white' onclick='accepted(\"" + oportunity_id + "\",\"" + client_name + "\" )'>"+
+										"<span class='text-success'>"+
+											"<i style='top: 1px;' class='material-icons'>check</i> "+
+										"</span> APROVADA "+
+									"</button>"+
+									"<button style='width: 50%;' type='button' class='btn btn-white' onclick='recused(\"" + oportunity_id + "\",\"" + client_name + "\" )'>"+
+										"<span class='text-danger'>"+
+											"<i style='top: 1px;'class='material-icons'>block</i> "+
+										"</span> RECUSADA "+
+									"</button>"+
+								"</div>"
+			}else{
+				if (oportunity_form){
+				html_quoted	= 	"<div style='margin-bottom: 5px;width: 100%;' class='btn-group btn-group-sm'>"+
+									"<button style='width: 100%;' type='button' class='btn btn-outline-secondary' onclick='showFormQuote(\"" + oportunity_id + "\",\"" + bike_id + "\"  )'>"+
+									  "<span class='text-light'>"+
+										"<i style='top: 1px;'class='material-icons'>attach_money</i> "+
+									  "</span> REALIZAR COTAÇÃO </button>"+
+								"</div>"
+				}else{
+					html_quoted	= 	"";
+				}
+				
+				quoted = '<span style="color:red;">PENDENTE</span>';
+			}
+			
+			
+			html_bloc =  "<div class='blog-comments__item d-flex p-3' style='padding-bottom: 8px!important; padding-top: 8px!important;'>"+
+									  "<div style='width: 100%;' class='blog-comments__content'>"+
+										"<div class='blog-comments__meta text-muted'>"+
+										 "<div style='border-bottom: 1px solid #ccc'>"+
+											"<div style='width: 90%; display: inline-block;'><span style='font-size: 0.7rem; color: #555 !important;' class=''>DETALHES DA OPORTUNIDADE</span></div>"+
+											"<div style='width: 10%; display: inline-block; text-align: right;'><span style='font-size: 0.7rem; color: #555 !important;' class=''><a style='color: #555 !important;' href='#' onclick='delOportunity(\"" + oportunity_id + "\",\"" + bike_id + "\",\"" + client_id + "\",\"" + client_name + "\" )'><i style='top: 1px;'class='material-icons'>delete</i></a></span></div>"+
+										  "</div>"+
+										  "<div style=''><span style='font-size: 0.7rem;' class='text-muted'>DATA: " + oportunity_date + "</span></div>"+
+										  "<div style='border-bottom: 1px solid #ccc'>"+
+											"<div style='width: 90%; display: inline-block;'><span style='font-size: 0.7rem; color: #555 !important;' class=''>DETALHES DO CLIENTE</span></div>"+
+											"<div style='width: 10%; display: inline-block; text-align: right;'><span style='font-size: 0.7rem; color: #555 !important;' class=''><a style='color: #555 !important;' href='#'  onclick='alertDemo();'><i style='top: 1px;'class='material-icons'>create</i></a></span></div>"+
+										  "</div>"+
+										  "<div style=''><span style='font-size: 0.7rem;' class='text-muted'>CLIENTE: " + client_name + "</span></div>"+
+										  "<div style='border-bottom: 1px solid #ccc'>"+
+											"<div style='width: 90%; display: inline-block;'><span style='font-size: 0.7rem; color: #555 !important;' class=''>DETALHES DA BICICLETA</span></div>"+
+											"<div style='width: 10%; display: inline-block; text-align: right;'><span style='font-size: 0.7rem; color: #555 !important;' class=''><a style='color: #555 !important;' href='#' onclick='alertDemo();'><i style='top: 1px;'class='material-icons'>create</i></a></span></div>"+
+										  "</div>"+
+										  "<div style=''><span style='font-size: 0.7rem;' class='text-muted'>FAMÍLIA: " + bike_type + "</span></div>"+
+										  "<div style=''><span style='font-size: 0.7rem;' class='text-muted'>VALOR: R$ " + bike_value + "</span></div>"+
+										  "<div style=''><span style='font-size: 0.7rem;' class='text-muted'>LOCAL DE RISCO: " + client_city + "-" + client_state + "</span></div>"+
+										  
+
+										  		  "<div style='border-bottom: 1px solid #ccc'>"+
+											"<div style='width: 90%; display: inline-block;'><span style='font-size: 0.7rem; color: #555 !important;' class=''>DETALHES DO SEGURO</span></div>"+
+											"<div style='width: 10%; display: inline-block; text-align: right;'><span style='font-size: 0.7rem; color: #555 !important;' class=''><a style='color: #555 !important;' href='#' onclick='alertDemo();'><i style='top: 1px;'class='material-icons'>create</i></a></span></div>"+
+										  "</div>"+
+										  
+										  "<div style=''><span style='font-size: 0.7rem;' class='text-muted'>FORMULÁRIO: " + answered + "</span></div>"+
+										  "<div style=''><span style='font-size: 0.7rem;' class='text-muted'>COTAÇÃO: " + quoted + "</span></div>"+
+										"</div>"+
+										
+										"<div style='text-align: center;width: 100%;margin-top: 10px;' class='blog-comments__actions'>"+
+											html_answered + 
+											html_quoted +
+										 "</div>"+
+									  "</div>"+
+									"</div>";
+									
+							$('#oportunities').append(html_bloc);
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		//****************************************************** FORM QUESTIONS ********************************************************************** //
+		
+		//*** Initialize validation
+		$("#formQuestions").validate({
+				ignore: 'input[type=hidden], .select2-search__field', // ignore hidden fields
+				errorClass: 'validation-invalid-label',
+				highlight: function(element, errorClass) {
+						$(element).removeClass(errorClass);
+				},
+				unhighlight: function(element, errorClass) {
+						$(element).removeClass(errorClass);
+				},
+
+				// Different components require proper error label placement
+				errorPlacement: function(error, element) {
+
+					// Unstyled checkboxes, radios
+					if (element.parents().hasClass('form-check')) {
+						error.appendTo( element.parents('.form-check').parent() );
+					}
+
+					// Input with icons and Select2
+					else if (element.parents().hasClass('form-group-feedback') || element.hasClass('select2-hidden-accessible')) {
+						error.appendTo( element.parent() );
+					}
+
+					// Input group, styled file input
+					else if (element.parent().is('.uniform-uploader, .uniform-select') || element.parents().hasClass('input-group')) {
+						error.appendTo( element.parent().parent() );
+					}
+
+					// Other elements
+					else {
+						error.insertAfter(element);
+					}
+				},
+				rules: {
+					"question1": {
+						required: true
+					},
+					"question2": {
+						required: true
+					},
+					"question3": {
+						required: true
+					}
+				},
+				messages: {
+					"question1": {
+						required: 'Resposta obligatória'
+					},
+					"question2": {
+						required: 'Resposta obligatória'
+					},
+					"question3": {
+						required: 'Resposta obligatório'
+					}
+			 }
+		});
+		
+		function showFormQuestion(oportunity_id){
+			oportunity_selected = oportunity_id;
+			$("#formQuestions")[0].reset();
+			$("#modal_form_questions").modal('show');
+		}
+		
+		$("#modal_form_questions").submit(function(e) {
+			var opt_checked = true;
+			
+			if($("#option1").is(":checked") || $("#option2").is(":checked") || $("#option3").is(":checked") || $("#option4").is(":checked")){
+			
+				addInsuranceForm(function(insurance_id){
+					console.log("Insurance Form created (ID): " + insurance_id);
+					if (insurance_id){
+						$("#modal_form_questions").modal('hide'); 
+						$("#formQuestions")[0].reset();
+						
+						addInsuranceformToOportunity(oportunity_selected, insurance_id, function(result){
+						console.log("Insurance Form added to Oportunity: " + insurance_id);
+							if (result){
+								alert('Formulario adicionado a oportunidade!');
+								getOportunitiesList();
+							}
+						});
+						
+					}else{
+						$("#modal_form_questions").modal('hide'); 
+						$("#formQuestions")[0].reset();
+					}
+				});
+				
+			}else{
+				$("#options-error").html('Selecione pelo menos uma opção de local');
+				$("#options-error").show();
+			}
+			
+
+
+
+			
+			e.preventDefault(); // avoid to execute the actual submit of the form.
+		});
+		
+		function addInsuranceForm(result){
+			$.ajax({
+				type: "POST",
+				url: "/seguros/api/insurancesforms/add",
+				data: $("#formQuestions").serialize(), // serializes the form's elements.
+				success: function(data)
+				{
+				   result(data['_id']);  
+				}
+			});
+		}
+		
+		function addInsuranceformToOportunity(oportunity_id, insuranceform_id, result){
+	
+			$.ajax({
+				type: "POST",
+				url: "/seguros/api/oportunities/add/insuranceform/" + oportunity_id,
+				data: {'insuranceform': insuranceform_id}, // serializes the form's elements.
+				dataType: "json",
+				success: function(data)
+				{
+				   result(data['_id']);  
+				}
+			});
+		}
+		
+
+		
+		function showFormQuote(oportunity_id, bike_id){
+			oportunity_selected = oportunity_id;
+			bike_selected = bike_id;
+			
+			$("#form_quote_payment").hide();
+			$("#quote_insurance_chosed").hide();
+			
+			$("#formQuote")[0].reset();
+			
+			$("#quote_insurance_title").html('');
+			$("#quote_insurance_risk_coverage").html('');
+			$("#quote_insurance_geographical_coverage").html('');
+			$("#quote_insurance_prime").html('');
+			
+			$("#quote_prime").val('');
+			$("#quote_payment").empty();
+			
+			loadInsurancesList();
+			
+
+			
+			$("#modal_form_quote").modal('show');
+		}
+		
+		$("#modal_form_quote").submit(function(e) {
+			
+			var insurance_id = $("#quote_insurance" ).val();
+			var insurance_payment = $("#quote_payment" ).val();
+			var insurance_prime = $("#quote_prime" ).val();
+			
+			if (insurance_id != null && insurance_payment != null && insurance_prime != null ){
+				console.log("Oportunity ID: " + oportunity_selected);
+				console.log("Insurance ID: " + insurance_id);
+				console.log("Insurance Prime: " + insurance_prime);
+				console.log("Insurance Payment: " + insurance_payment);
+				
+				addInsuranceToOportunity(oportunity_selected, insurance_id, insurance_prime, insurance_payment, function(result){
+					console.log("Insurance added to Oportunity: " + oportunity_selected);
+					if (result){
+						alert('Seguradora adicionada a oportunidade!');
+						getOportunitiesList();
+					}
+				});
+				
+				$("#modal_form_quote").modal('hide'); 
+				$("#formQuote")[0].reset();
+			}else{
+				console.log('Not Save');
+			}
+	
+
+			
+
+			e.preventDefault(); // avoid to execute the actual submit of the form.
+		});
+		
+		
+		function addInsuranceToOportunity(oportunity_id, insurance_id, insurance_prime, insurance_payment, result){
+	
+			$.ajax({
+				type: "POST",
+				url: "/seguros/api/oportunities/add/insurance/" + oportunity_id,
+				data: {'insurance': insurance_id, 'prime': insurance_prime, 'payment': insurance_payment}, // serializes the form's elements.
+				dataType: "json",
+				success: function(data)
+				{
+				   result(data['_id']);  
+				}
+			});
+		}
+		
+		function loadInsurancesList(){
+		
+			getInsurancesList(function(result){
+				if(result){
+					$("#quote_insurance").html("<option value='' selected>Selecione uma seguradora...</option>");
+					$.each(result, function(index, element) {
+						$("#quote_insurance").append("<option value='"+ element._id + "'>" + element.insurance.name + "</option>");
+						console.log(element.insurance.name);
+					});
+				}
+			});
+		}
+		
+		$("#quote_insurance").on('change', function() {
+			console.log("Insurance ID: " + this.value);
+			var insurance_id = this.value;
+			
+			if(insurance_id != ''){
+			
+				getBikeDatas(bike_selected, function(datas_bike){
+					console.log("Bike value: " + datas_bike.bike.value);
+					
+					getInsuranceDatas(insurance_id, function(result){
+						
+						
+						var ar_risk_coverage = [];
+						var ar_geographical_coverage = [];
+						
+						if (result.insurance.risk_coverage.loss == 'yes'){ar_risk_coverage.push('Perda')};
+						if (result.insurance.risk_coverage.theft == 'yes'){ar_risk_coverage.push('Roubo e furto')};
+						
+						if (result.insurance.geographical_coverage.SP == 'yes'){ar_geographical_coverage.push('SP')};
+						if (result.insurance.geographical_coverage.PE == 'yes'){ar_geographical_coverage.push('PE')};
+						if (result.insurance.geographical_coverage.PB == 'yes'){ar_geographical_coverage.push('PB')};
+						if (result.insurance.geographical_coverage.AL == 'yes'){ar_geographical_coverage.push('AL')};
+						
+						insurance_risk_coverage = ar_risk_coverage.join();
+						insurance_geographical_coverage = ar_geographical_coverage.join();
+						
+						var bike_value = datas_bike.bike.value.replace(".","");
+						bike_value = bike_value.replace(",",".");
+						bike_value = parseFloat(bike_value);
+						
+						console.log(bike_value);
+						
+						var pur = bike_value*(result.insurance.risk_factor/100);
+						var exp = pur*(result.insurance.expenses/100);
+						var pro = pur*(result.insurance.profit/100);
+						var tot	= pur + exp + pro;
+						var tax = tot*(result.insurance.taxes/100);
+						var prime = tot + tax;
+						var prime_txt = prime.toFixed(2).replace(".",",");
+						
+						
+						
+						console.log("Pur Prime: " + pur);
+						console.log("Expenses: " + exp);
+						console.log("Profit: " + pro);
+						console.log("Taxes: " + tax);
+						console.log("Prime: " + prime.toFixed(2).replace(".",",") );
+							
+						$("#quote_insurance_title").html(result.insurance.name);
+						$("#quote_insurance_risk_coverage").html(insurance_risk_coverage);
+						$("#quote_insurance_geographical_coverage").html(insurance_geographical_coverage);
+						$("#quote_insurance_prime").html('R$ ' + prime_txt);
+						
+						$("#quote_prime").val(prime);
+						
+						$("#quote_payment").empty();
+						$("#quote_payment").append("<option value='1'>1 x " + prime_txt + "</option>");
+						$("#quote_payment").append("<option value='2'>2 x " + (prime/2).toFixed(2).replace(".",",") + "</option>");
+						$("#quote_payment").append("<option value='3'>3 x " + (prime/3).toFixed(2).replace(".",",") + "</option>");
+						$("#quote_payment").append("<option value='4'>4 x " + (prime/4).toFixed(2).replace(".",",") + "</option>");
+						$("#quote_payment").append("<option value='5'>5 x " + (prime/5).toFixed(2).replace(".",",") + "</option>");
+						$("#quote_payment").append("<option value='6'>6 x " + (prime/6).toFixed(2).replace(".",",") + "</option>");
+						
+						$("#form_quote_payment").show();
+						$("#quote_insurance_chosed").show();
+					});
+					
+				});
+				
+
+			}else{
+				$("#quote_prime").val('');
+				$("#quote_payment").empty();
+				$("#form_quote_payment").hide();
+				$("#quote_insurance_chosed").hide();
+				$("#quote_insurance_title").html('');
+			}
+		});
+		
+		
+			
+		
+		function alertDemo() {
+            bootbox.alert({
+                title: 'Demo Desafio vSales 2019!',
+                message: 'Versão demo. Funcionalidade não tratada no desafio, mas pode ser desenvolvida.'
+            });
+        }
+		
+		
+		
+		
+	</script>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+<!-- index.ejs -->
+ <html>
+   <body>
+     <h1>Cotação de Seguros de Bike Online</h1>
+     <form action="/quote/add" method="post">
+       <label>Name:
+         <input type="text" name="quotes[name]">
+       </label>
+       <label>Lastname:
+         <input type="text" name="quotes[lastname]">
+       </label>
+       <button type="submit">Adicionar</button>
+     </form>
+     <h1>Lista de cotações</h1>
+     <ul>
+     <% for(var i = 0; i < quotes.length; i++){ %>
+       <li><%= quotes[i].name %> - <%= quotes[i].lastname %>
+         <a href="/quote/<%= i %>/edit">Editar</a>
+         &nbsp;|&nbsp;
+         <a href="/quote/<%= i %>/delete">Excluir</a>
+       </li>
+     <% } %>
+     </ul>
+   </body>
+ </html>

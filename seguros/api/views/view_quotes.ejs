@@ -1,0 +1,769 @@
+﻿<!doctype html>
+<html class="no-js h-100" lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
+	<!--<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
+	
+	<meta name="author" content="Vincent Queimado">
+	<meta name="description" content="Desafio de criação de API para cotação de seguro.">
+	
+    <title>Sistema de Gestão para Corretoras de Seguros</title>
+	
+	<!--[if IE]><link rel="shortcut icon" href="static/images/icosegbike.ico"><![endif]-->
+	<link rel="icon" href="../../static/images/icosegbike.png">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../../static/styles/plugins/components.css">
+	<link rel="stylesheet" type="text/css" href="../../static/styles/plugins/icons/icomoon/styles.css">
+	<link rel="stylesheet" type="text/css" href="../../static/styles/app/shards-dashboards.1.1.0.min.css">
+    <link rel="stylesheet" type="text/css" href="../../static/styles/app/extras.1.1.0.min.css">
+
+
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  </head>
+  
+  <body class="h-100">
+ 
+
+    <div class="container-fluid">
+      <div class="row">
+     <!-- Main Sidebar -->
+               <aside class="main-sidebar col-12 col-md-3 col-lg-2 px-0">
+          <div class="main-navbar">
+            <nav style="background-color: #0593CC!important; border-bottom: 1px solid #1299d0!important; " class="navbar align-items-stretch navbar-light bg-white flex-md-nowrap border-bottom p-0">
+              <a class="navbar-brand w-100 mr-0" href="#" style="color:#fff; line-height: 25px;">
+                <div class="d-table m-auto">
+                  <img id="main-logo" class="d-inline-block align-top mr-1" style="height: 40px; padding-right: 10px; padding-left: 10px;" src="../../static/images/app/LogoSegBike.png" alt="BikeSeguros">
+                 <!--<span style="font-size: .9rem;"  class=" d-md-inline ml-1">MENU PRINCIPAL</span>-->
+                </div>
+              </a>
+              <a style="color:#fff;" class="toggle-sidebar d-sm-inline d-md-none d-lg-none">
+                <i style="top: 0px;" class="material-icons">&#xE5C4;</i>
+              </a>
+            </nav>
+          </div>
+
+          <div class="nav-wrapper">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link active" href="/seguros/app/dashboard">
+                  <i class="material-icons">home</i>
+                  <span>Início</span>
+                </a>
+              </li>
+			  
+			  <li class="nav-item">
+                <a class="nav-link " href="/seguros/app/oportunities_new">
+                  <i class="material-icons">add</i>
+                  <span>Nova Oportunidade</span>
+                </a>
+              </li>
+			  
+			  <li class="nav-item">
+                <a class="nav-link " href="/seguros/app/oportunities_new">
+                  <i class="material-icons">people</i>
+                  <span>Clientes</span>
+                </a>
+              </li>
+			  
+			  <li class="nav-item">
+                <a class="nav-link " href="/seguros/app/oportunities_list">
+                  <i class="material-icons">monetization_on</i>
+                  <span>Oportunidades</span>
+                </a>
+              </li>
+	
+              <li class="nav-item">
+                <a class="nav-link " href="/seguros/app/insurances_list">
+                  <i class="material-icons">verified_user</i>
+                  <span>Seguradoras</span>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link " href="/seguros/app/profile">
+                  <i class="material-icons">account_circle</i>
+                  <span>Minha Conta</span>
+                </a>
+              </li>
+			  
+              <li class="nav-item">
+                <a class="nav-link " href="/seguros/app/support">
+                  <i class="material-icons">contact_support</i>
+                  <span>Suporte</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </aside>
+        <!-- End Main Sidebar -->
+        <main class="main-content col-lg-10 col-md-9 col-sm-12 p-0 offset-lg-2 offset-md-3">
+          <div class="main-navbar sticky-top bg-white">
+            <!-- Main Navbar -->
+             <nav style="flex-wrap: nowrap!important;" class="navbar  navbar-light flex-md-nowrap p-0">
+      				   <a class="navbar-brand w-100 mr-0" href="#" style="color:#fff; line-height: 25px;">
+					<div style="color:#3d5170; margin-left: 18px!important;" class="d-table m-auto">
+					  <img id="main-logo" class="d-inline-block align-top mr-1" style="height: 30px; padding-right: 10px; padding-left: 10px;" src="../../static/images/app/LogoSegBike2.png" alt="Bike Seguros">
+					 <!--<i class="material-icons">web</i> <span class=" d-md-inline ml-1">PAINEL DE GESTÃO </span>-->
+					</div>
+				  </a>
+              <ul class="navbar-nav border-left flex-row ">
+
+              </ul>
+              <nav class="nav">
+                <a href="#" class="nav-link nav-link-icon toggle-sidebar d-md-inline d-lg-none text-center border-left" data-toggle="collapse" data-target=".header-navbar" aria-expanded="false" aria-controls="header-navbar">
+                  <i class="material-icons">&#xE5D2;</i>
+                </a>
+              </nav>
+            </nav>
+          </div>
+          <!-- / .main-navbar -->
+		  
+		    <div id="successNotif" style="display:none;" class="alert alert-success alert-dismissible fade show mb-0" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				  <span aria-hidden="true">×</span>
+				</button>
+				<i class="fa fa-check mx-2"></i>
+				<div style="width: 80%; display: inline-grid;"><strong>Cadastrado!</strong> As informações do cliente foram registradas com sucesso. </div>
+			</div>
+		  
+		  
+          <div class="main-content-container container-fluid px-4">
+            <!-- Page Header -->
+            <div class="page-header row no-gutters py-4">
+              <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+                <i style="font-size: 0.95rem;" class="material-icons">subject</i> <span style="font-size: 1rem;" class="text-uppercase page-subtitle">OPORTUNIDADE</span>
+                <!--<h3 class="page-title"></h3>-->
+              </div>
+            </div>
+            <!-- End Page Header -->
+			
+           
+            <div class="row">
+				<div class="col-lg-5 col-md-12 col-sm-12 mb-4">
+                <div class="card card-small blog-comments">
+                  <div class="card-header border-bottom">
+                    <h6 class="m-0">Detalhes da Oportunidade</h6>
+                  </div>
+				  
+				  
+                  <div class="card-body p-0">
+                    <div class="blog-comments__item d-flex p-3">
+                      <div class="blog-comments__avatar mr-3">
+                        <img src="images/avatars/1.jpg" alt="User avatar" /> </div>
+                      <div class="blog-comments__content">
+                        <div class="blog-comments__meta text-muted">
+                          <a class="text-secondary" href="#">James Johnson</a> on
+                          <a class="text-secondary" href="#">Hello World!</a>
+                          <span class="text-muted">â€“ 3 days ago</span>
+                        </div>
+                        <p class="m-0 my-1 mb-2 text-muted">Well, the way they make shows is, they make one show ...</p>
+                        <div class="blog-comments__actions">
+                          <div class="btn-group btn-group-sm">
+                            <button type="button" class="btn btn-white">
+                              <span class="text-success">
+                                <i class="material-icons">check</i>
+                              </span> Approve </button>
+                            <button type="button" class="btn btn-white">
+                              <span class="text-danger">
+                                <i class="material-icons">clear</i>
+                              </span> Reject </button>
+                            <button type="button" class="btn btn-white">
+                              <span class="text-light">
+                                <i class="material-icons">more_vert</i>
+                              </span> Edit </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="blog-comments__item d-flex p-3">
+                      <div class="blog-comments__avatar mr-3">
+                        <img src="images/avatars/2.jpg" alt="User avatar" /> </div>
+                      <div class="blog-comments__content">
+                        <div class="blog-comments__meta text-muted">
+                          <a class="text-secondary" href="#">James Johnson</a> on
+                          <a class="text-secondary" href="#">Hello World!</a>
+                          <span class="text-muted">â€“ 4 days ago</span>
+                        </div>
+                        <p class="m-0 my-1 mb-2 text-muted">After the avalanche, it took us a week to climb out. Now...</p>
+                        <div class="blog-comments__actions">
+                          <div class="btn-group btn-group-sm">
+                            <button type="button" class="btn btn-white">
+                              <span class="text-success">
+                                <i class="material-icons">check</i>
+                              </span> Approve </button>
+                            <button type="button" class="btn btn-white">
+                              <span class="text-danger">
+                                <i class="material-icons">clear</i>
+                              </span> Reject </button>
+                            <button type="button" class="btn btn-white">
+                              <span class="text-light">
+                                <i class="material-icons">more_vert</i>
+                              </span> Edit </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="blog-comments__item d-flex p-3">
+                      <div class="blog-comments__avatar mr-3">
+                        <img src="images/avatars/3.jpg" alt="User avatar" /> </div>
+                      <div class="blog-comments__content">
+                        <div class="blog-comments__meta text-muted">
+                          <a class="text-secondary" href="#">James Johnson</a> on
+                          <a class="text-secondary" href="#">Hello World!</a>
+                          <span class="text-muted">â€“ 5 days ago</span>
+                        </div>
+                        <p class="m-0 my-1 mb-2 text-muted">My money's in that office, right? If she start giving me...</p>
+                        <div class="blog-comments__actions">
+                          <div class="btn-group btn-group-sm">
+                            <button type="button" class="btn btn-white">
+                              <span class="text-success">
+                                <i class="material-icons">check</i>
+                              </span> Approve </button>
+                            <button type="button" class="btn btn-white">
+                              <span class="text-danger">
+                                <i class="material-icons">clear</i>
+                              </span> Reject </button>
+                            <button type="button" class="btn btn-white">
+                              <span class="text-light">
+                                <i class="material-icons">more_vert</i>
+                              </span> Edit </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+				  
+				  
+                  <div class="card-footer border-top">
+                    <div class="row">
+                      <div class="col text-center view-report">
+                        <button type="submit" class="btn btn-white">View All Comments</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+			  
+            </div>
+     
+          </div>
+          <footer class="main-footer d-flex p-2 px-3 bg-white border-top">
+            <ul class="nav">
+              
+            </ul>
+            <span class="copyright ml-auto my-auto mr-2">Painel de gestão - Desafio vSales 2019
+              <a href="" rel="nofollow"></a>
+            </span>
+          </footer>
+        </main>
+      </div>
+    </div>
+   
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+    <script src="https://unpkg.com/shards-ui@latest/dist/js/shards.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sharrre/2.0.1/jquery.sharrre.min.js"></script>
+    <script src="../../static/scripts/app/extras.1.1.0.min.js"></script>
+    <script src="../../static/scripts/app/shards-dashboards.1.1.0.min.js"></script>
+    <!--<script src="../../static/scripts/app/app/app-blog-overview.1.1.0.js"></script>-->
+	<script src="../../static/scripts/moment.min.js"></script>
+	<script src="../../static/scripts/app/jquery.mask.min.js"></script>
+	<script src="../../static/plugins/wizard/steps.min.js"></script>
+	<script src="../../static/plugins/validation/validate.min.js"></script>
+  
+  	<script>
+	
+	//*** Check JS Plugins
+	if (!$().steps) {
+			console.warn('Warning - steps.min.js is not loaded.');
+	}
+
+	if (!$().validate) {
+			console.warn('Warning - validate.min.js is not loaded.');
+	}
+	
+	//*** Wizard Form
+	var form_addclient = $("#addForm").show();
+ 
+	form_addclient.steps({
+		headerTag: "h3",
+		bodyTag: "fieldset",
+		transitionEffect: "slideLeft",
+		titleTemplate: '<span class="number">#index#</span> #title#',
+		labels: {
+					previous: '<i class="icon-arrow-left13 mr-2" /> Anterior',
+					next: 'Próximo <i class="icon-arrow-right14 ml-2" />',
+					finish: 'Realizar Cotação<i class="icon-plus2 ml-2" />'
+			},
+			transitionEffect: 'fade',
+			autoFocus: true,
+			onStepChanging: function (event, currentIndex, newIndex) {
+
+					// Allways allow previous action even if the current form is not valid!
+					if (currentIndex > newIndex) {
+							return true;
+					}
+
+					// Needed in some cases if the user went back (clean up)
+					if (currentIndex < newIndex) {
+
+							// To remove error styles
+							form_addclient.find('.body:eq(' + newIndex + ') label.error').remove();
+							form_addclient.find('.body:eq(' + newIndex + ') .error').removeClass('error');
+					}
+
+					form_addclient.validate().settings.ignore = ':disabled,:hidden';
+					return form_addclient.valid();
+			},
+			onFinishing: function (event, currentIndex) {
+					form_addclient.validate().settings.ignore = ':disabled';
+					return form_addclient.valid();
+			},
+			onFinished: function (event, currentIndex) {
+					//alert('Cadastrado!');
+					form_addclient.submit();
+			}
+	});
+	
+	
+	
+	//*** Initialize validation
+	form_addclient.validate({
+			ignore: 'input[type=hidden], .select2-search__field', // ignore hidden fields
+			errorClass: 'validation-invalid-label',
+			highlight: function(element, errorClass) {
+					$(element).removeClass(errorClass);
+			},
+			unhighlight: function(element, errorClass) {
+					$(element).removeClass(errorClass);
+			},
+
+			// Different components require proper error label placement
+            errorPlacement: function(error, element) {
+
+                // Unstyled checkboxes, radios
+                if (element.parents().hasClass('form-check')) {
+                    error.appendTo( element.parents('.form-check').parent() );
+                }
+
+                // Input with icons and Select2
+                else if (element.parents().hasClass('form-group-feedback') || element.hasClass('select2-hidden-accessible')) {
+                    error.appendTo( element.parent() );
+                }
+
+                // Input group, styled file input
+                else if (element.parent().is('.uniform-uploader, .uniform-select') || element.parents().hasClass('input-group')) {
+                    error.appendTo( element.parent().parent() );
+                }
+
+                // Other elements
+                else {
+                    error.insertAfter(element);
+                }
+            },
+			rules: {
+				"bike[type]": {
+					minlength: 1,
+					maxlength: 128
+				},
+				"bike[brand]": {
+					minlength: 1,
+					maxlength: 128
+				},
+				"bike[model]": {
+					minlength: 1,
+					maxlength: 128
+				},
+				"bike[year]": {
+					digits: true,
+					minlength: 4,
+					maxlength: 4,
+					range: [1980, 2050]
+				},
+				"bike[value]": {
+					minlength: 1,
+					maxlength: 10
+				},
+				"bike[serial]": {
+					minlength: 1,
+					maxlength: 32
+				},
+				
+				"answers[accessory]": {
+					required :true
+				},
+				"answers[frequency]": {
+					required :true
+				},
+				"answers[competition]": {
+					required :true
+				},
+				"answers[where]": {
+					required :true
+				},
+		
+				"client[name]": {
+					minlength: 1,
+					maxlength: 128
+				},
+				"client[identity]": {
+					minlength: 14,
+					maxlength: 18
+				},
+
+				"client[contact][email]": {
+					email:true,
+					minlength: 1,
+					maxlength: 64
+				},
+				"client[contact][phone1]": {
+					minlength: 1,
+					maxlength: 16
+				},
+				"client[contact][phone2]": {
+					minlength: 1,
+					maxlength: 16
+				},
+			},
+			messages: {
+				"bike[type]": {
+					required: 'Tipo de bike obligatório'
+				},
+				"bike[brand]": {
+					required: 'Marca de bike obligatório'
+				},
+				"bike[model]": {
+					required: 'Modelo de bike obligatório'
+				},
+				"bike[year]": {
+					required: 'Ano de fabricação obligatório',
+					digits: "Ano inválido",
+					range: jQuery.validator.format("Ano entre {0} e {1}"),
+				},
+				"bike[value]": {
+					required: 'Valor estimado obligatório'
+				},
+				
+				"answers[accessory]": {
+					required: 'Resposta obligatório'
+				},
+				"answers[frequency]": {
+					required: 'Resposta obligatório'
+				},
+				"answers[competition]": {
+					required: 'Resposta obligatório'
+				},
+				"answers[where]": {
+					required: 'Escolha obligatório'
+				},
+				
+				"client[type]": {
+					required: 'Tipo de cliente obligatório'
+				 },
+				
+				"client[name]": {
+					required: 'Nome do cliente obligatório'
+				 },
+				"client[identity]": {
+					required: 'Numéro de CPF ou CNPJ obligatório',
+					minlength: jQuery.validator.format("CPF ou CNPJ inválido"),
+				},
+				
+				"client[contact][email]": {
+					required: 'E-mail obligatório',
+					email: "E-mail inválido"
+				},
+				"client[contact][phone1]": {
+					required: 'Numéro de telefone obligatório'
+				 },
+				"client[contact][phone2]": {
+					required: 'Numéro de telefone obligatório'
+				 },
+				 
+				"client[address][zipcode]":  {
+					required: 'CEP obligatório'
+				},
+				"client[address][streetname]":  {
+					required: 'Endereço obligatório'
+				},
+				"client[address][streetnumber]":  {
+					required: 'Numéro do endereço obligatório'
+				},
+				"client[address][neighborhood]":  {
+					required: 'Bairro obligatório'
+				},
+				"client[address][city]":  {
+					required: 'Cidade obligatório'
+				},
+				"client[address][state]":  {
+					required: 'Estado obligatório'
+				},
+				"client[address][country]":  {
+					required: 'País obligatório'
+				}
+		 }
+	});
+	
+	//*** Client type change
+	$('#client_identity').mask('000.000.000-00', {reverse: true});
+	
+	$("input:radio[name='client[type]']").change(function() {
+		console.log('Change client type!');
+		switch( $("input:radio[name='client[type]']:checked").val() ) {
+			case 'PF' :
+				$('#client_identity').val('');
+				$("#lbl_client_name").html("Nome Completo: *");
+				$("#lbl_client_identity").html("CPF: *");
+				$("#client_name").attr("placeholder", "Digite o nome completo do cliente");
+				$("#client_identity").attr("placeholder", "000.000.000-00");
+				$('#client_identity').mask('000.000.000-00', {reverse: true});
+				break;
+			case 'PJ' :
+				$('#client_identity').val('');
+				$("#lbl_client_name").html("Razão Social: *");
+				$("#lbl_client_identity").html("CNPJ: *");
+				$("#client_name").attr("placeholder", "Digite a razão social do cliente");
+				$("#client_identity").attr("placeholder", "00.000.000/0000-00");
+				$('#client_identity').mask('00.000.000/0000-00', {reverse: true});
+				break;
+		}            
+	});
+	
+	 $("#addForm").submit(function(e) {
+
+		var form = $(this);
+		var url = form.attr('action');
+
+		$.ajax({
+			   type: "POST",
+			   url: url,
+			   data: form.serialize(), // serializes the form's elements.
+			   success: function(data)
+			   {
+				   console.log(data); 
+				   $('#successNotif').fadeIn('slow').delay(5000).fadeOut('slow');
+				   $('#addForm')[0].reset();
+				   $(window).scrollTop($('#successNotif').offset().top -40);
+			   }
+			 });
+
+		e.preventDefault(); // avoid to execute the actual submit of the form.
+	});
+	
+		
+		
+	//*** Year Format
+	$('#bike_year').mask("0000");
+	
+	//*** Money Format
+	$('#bike_value').mask("#.##0,00", {reverse: true});
+	
+	
+	//*** ZIP Code finder
+	
+	$('#client_zipcode').mask('00000-000');
+	
+	function limpa_formulário_cep() {
+			//Limpa valores do formulário de cep.
+			document.getElementById('client_streetname').value=("");
+			document.getElementById('client_neighborhood').value=("");
+			document.getElementById('client_city').value=("");
+			document.getElementById('client_state').value=("");
+			//document.getElementById('client_ibge').value=("");
+	}
+
+	function meu_callback(conteudo) {
+		if (!("erro" in conteudo)) {
+			//Atualiza os campos com os valores.
+			document.getElementById('client_streetname').value=(conteudo.logradouro.toUpperCase());
+			document.getElementById('client_neighborhood').value=(conteudo.bairro.toUpperCase());
+			document.getElementById('client_city').value=(conteudo.localidade.toUpperCase());
+			document.getElementById('client_state').value=(conteudo.uf.toUpperCase());
+			//document.getElementById('client_ibge').value=(conteudo.ibge);
+		} //end if.
+		else {
+			//CEP não Encontrado.
+			limpa_formulário_cep();
+			alert("CEP não encontrado.");
+		}
+	}
+	
+	function pesquisacep(valor) {
+
+		//Nova variável "cep" somente com dígitos.
+		var cep = valor.replace(/\D/g, '');
+
+		//Verifica se campo cep possui valor informado.
+		if (cep != "") {
+
+			//Expressão regular para validar o CEP.
+			var validacep = /^[0-9]{8}$/;
+
+			//Valida o formato do CEP.
+			if(validacep.test(cep)) {
+
+				//Preenche os campos com "..." enquanto consulta webservice.
+				document.getElementById('client_streetname').value="...";
+				document.getElementById('client_neighborhood').value="...";
+				document.getElementById('client_city').value="...";
+				document.getElementById('client_state').value="...";
+				//document.getElementById('client_ibge').value="...";
+
+				//Cria um elemento javascript.
+				var script = document.createElement('script');
+
+				//Sincroniza com o callback.
+				script.src = 'https://viacep.com.br/ws/'+ cep + '/json/?callback=meu_callback';
+
+
+				//Insere script no documento e carrega o conteúdo.
+				document.body.appendChild(script);
+				
+				$('#client_streetnumber').focus().select()
+
+			} //end if.
+			else {
+				//cep é inválido.
+				limpa_formulário_cep();
+				alert("Formato de CEP inválido.");
+			}
+		} //end if.
+		else {
+			//cep sem valor, limpa formulário.
+			limpa_formulário_cep();
+		}
+	};
+	
+
+	//*** Telephone Format
+	var SPMaskBehavior = function (val) {
+		return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
+	},
+	spOptions = {
+		onKeyPress: function(val, e, field, options) {
+			field.mask(SPMaskBehavior.apply({}, arguments), options);
+		 }
+	};
+	
+
+	$('.sp_celphones').mask(SPMaskBehavior, spOptions);
+	
+	
+	//*** Uppercase Format
+	$('#bike_type').blur(function(){
+		this.value = this.value.toUpperCase();
+	});
+	
+	$('#bike_type').keyup(function(){
+		this.value = this.value.toUpperCase();
+	});
+	
+	$('#bike_brand').blur(function(){
+		this.value = this.value.toUpperCase();
+	});
+	
+	$('#bike_brand').keyup(function(){
+		this.value = this.value.toUpperCase();
+	});
+	
+	$('#bike_model').blur(function(){
+		this.value = this.value.toUpperCase();
+	});
+	
+	$('#bike_model').keyup(function(){
+		this.value = this.value.toUpperCase();
+	});
+	
+	$('#bike_serial').keyup(function(){
+		this.value = this.value.toUpperCase();
+	});
+	
+	$('#bike_serial').keyup(function(){
+		this.value = this.value.toUpperCase();
+	});
+	
+	$('#client_name').keyup(function(){
+		this.value = this.value.toUpperCase();
+	});
+	
+	$('#client_name').blur(function() {
+	  this.value = this.value.toUpperCase();
+	});
+	
+	$('#client_email').keyup(function(){
+		this.value = this.value.toUpperCase(); //.toLowerCase();
+	});
+	
+	$('#client_email').blur(function(){
+		this.value = this.value.toUpperCase(); //.toLowerCase();
+	});
+	
+	$('#client_zipcode').keyup(function(){
+		this.value = this.value.toUpperCase();
+	});
+	
+	$('#client_zipcode').blur(function(){
+		this.value = this.value.toUpperCase();
+	});
+	
+	$('#client_streetname').keyup(function(){
+		this.value = this.value.toUpperCase();
+	});
+	
+	$('#client_streetname').blur(function(){
+		this.value = this.value.toUpperCase();
+	});
+	
+	$('#client_streetnumber').keyup(function(){
+		this.value = this.value.toUpperCase();
+	});
+	
+	$('#client_streetnumber').blur(function(){
+		this.value = this.value.toUpperCase();
+	});
+	
+	$('#client_neighborhood').keyup(function(){
+		this.value = this.value.toUpperCase();
+	});
+	
+	$('#client_neighborhood').blur(function(){
+		this.value = this.value.toUpperCase();
+	});
+
+	$('#client_city').keyup(function(){
+		this.value = this.value.toUpperCase();
+	});
+	
+	$('#client_city').blur(function(){
+		this.value = this.value.toUpperCase();
+	});
+	
+	$('#client_state').keyup(function(){
+		this.value = this.value.toUpperCase();
+	});
+	
+	$('#client_state').blur(function(){
+		this.value = this.value.toUpperCase();
+	});
+	
+	$('#client_country').keyup(function(){
+		this.value = this.value.toUpperCase();
+	});
+	
+	$('#client_country').blur(function(){
+		this.value = this.value.toUpperCase();
+	});
+
+	</script>
+
+  
+  </body>
+</html>

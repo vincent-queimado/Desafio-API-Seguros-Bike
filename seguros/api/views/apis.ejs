@@ -1,0 +1,128 @@
+<!DOCTYPE HTML>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+<title>Api's</title>
+
+		<!--[if IE]><link rel="shortcut icon" href="../static/images/favicon.ico"><![endif]-->
+		<link rel="icon" href="../static/images/favicon128.png">
+
+<link rel="stylesheet" type="text/css" href="/static/styles/home/style.css">
+<link rel="stylesheet" type="text/css" href="/static/styles/home/framework.css">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800" >
+</head>
+
+<body>
+<div id="page-preloader"></div>
+
+<div id="page-deco-top"></div>
+<div id="page-deco-bottom"></div>
+	
+<div id="page-background"></div>
+<div id="page-transitions">
+	
+	
+	<div class="header">
+		<a href="/seguros" class="header-icon header-icon-1"><i class="fa fa-home"></i></a>
+		<a href="#" class="header-title">Projeto de criação de API's com NodeJS</a>
+		<a href="#" class="show-navigation header-icon header-icon-2"><i class="fa fa-th-large"></i></a>
+	</div>
+	
+	<div class="navigation">
+		<a href="/seguros"><i class="fa fa-th-large"></i><em>Home</em></a>
+		<a class="active-item" href="/seguros/apis"><i class="fa fa-cog"></i><em>API's</em></a>
+		<a href="/seguros/app"><i class="fa fa-rocket"></i><em>Painel de Gestão</em></a>
+		<a href="/seguros/codes"><i class="fa fa-code"></i><em>Código</em></a>
+		<a href="#" class="close-navigation"><i class="fa fa-close"></i><em>Fechar</em></a>
+	</div>
+	
+	<div style="margin-bottom: 5px;" class="decoration decoration-margins no-bottom"></div>
+	
+	
+	<div style=" margin-top: 0px;margin-bottom: 40px;" class="title">
+		<span style="font-family: 'Dosis', sans-serif;">API's básicas </span><br>
+		<span style="font-family: 'Dosis', sans-serif;">para cotação de seguros de bike</span>
+	</div>
+
+	<div class="decoration decoration-margins"></div>
+	
+	<div class="content">
+		<h1 class="text-shadow page-heading"><i class="fa fa-arrow-circle-o-right"></i>Apresentação</h1>
+		<p>Todas as API's desenvolvidas com NodeJS no quadro do desafio vSales podem ser testadas através da ferramenta <a href="https://www.getpostman.com/"><em>"Postman" </em></a> ou diretamente acessando um front-end especialmente desenvolvido para teste: <a href="/seguros/app"><em>"Painel de Gestão de Cotação de Seguros de Bike"</em></a>. Faz-se necessario o banco de dados MongoDB para realizar os cadastros de seguros.</p>
+		
+		<div class="decoration"></div>
+	
+		<h1 class="text-shadow page-heading half-bottom"><i class="fa fa-arrow-circle-o-right"></i>Lista de API's</h1>
+		<p>As API's foram criadas a partir de RestAPI's utilizando as solicitações POST/GET/PUT DELETE:</p>
+		
+		
+		<div style="width: 100%" class="one-half">
+			<ul>
+					<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/oportunities </li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/oportunities/list </li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/oportunities/list_pending </li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/oportunities/list_accepted </li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/oportunities/list_refused</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/oportunities/latest</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/oportunities/latest/:limit</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/oportunities/count</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/oportunities/count_pending</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/oportunities/count_accepted</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/oportunities/count_refused</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/oportunities/add</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/oportunities/add/insuranceform/:id</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/oportunities/add/insurance/:id</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/oportunities/view/:id</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/oportunities/update/:id</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/oportunities/pending/:id</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/oportunities/accepted/:id</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/oportunities/refused/:id</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/oportunities/delete/:id</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/bikes/list</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/bikes/add</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/bikes/latest</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/bikes/latest/:limit</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/bikes/view/:id</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/bikes/delete/:id</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/clients/list</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/clients/add</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/clients/latest</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/clients/latest/:limit</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/clients/view/:id</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/clients/delete/:id</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/insurancesforms/list</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/insurancesforms/add</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/insurancesforms/latest</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/insurancesforms/latest/:limit</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/insurancesforms/view/:id</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/insurancesforms/delete/:id</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/insurances/list</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/insurances/add</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/insurances/latest</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/insurances/latest/:limit</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/insurances/view/:id</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/insurances/delete/:id</li>
+			</ul>
+		</div>
+
+		
+		<div class="decoration"></div>
+		
+			<h1 class="text-shadow page-heading"><i class="fa fa-arrow-circle-o-right"></i>Sobre o Front-End</h1>
+		<p>O Painel de gestão foi desenvolvido especialmente para testar as API's do desafio. O painel foi desenvolvido encima do modelo MVC, executado como serviço Web na porta 9090 via NodeJS. O banco de dados utilizado é MongoDB. Atualmente o serviço web està rodando numa VPS própria no ambiente Linux Debian 9. Qualquer dúvida ou necessitando de mais informações sobre o front-end, estou à disposição.</p>
+		
+		<strong>Vincent Queimado</strong>
+	</div>
+	
+	
+	
+</div>
+
+<script type="text/javascript" src="/static/scripts/home/jquery.js"></script>
+<script type="text/javascript" src="/static/scripts/home/custom.js"></script>
+<script type="text/javascript" src="/static/scripts/home/plugins.js"></script>
+
+</body>

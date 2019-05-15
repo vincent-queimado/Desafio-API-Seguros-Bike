@@ -1,0 +1,49 @@
+	//oportunities_models.js
+
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+
+
+//*** Quote Schema ****
+var OportunitySchema = new Schema({
+	oportunity: {
+		bike: {
+			type: String,
+			required: 'Bike ID'
+		},
+		
+		client: {
+			type: String,
+			required: 'Client ID'
+		},
+		
+		answer: {
+			type: String,
+		},
+		
+		insurance: {
+			type: String,
+		},
+		
+		created_date: {
+			type: Date,
+			default: Date.now
+		},
+		
+		status: {
+			type: [{
+				type: String,
+				enum: ['pending', 'accepted', 'refused']
+			}],
+			default: ['pending']
+		}
+	}
+});
+
+
+//*** Export Quote model ***
+var Oportunity = module.exports = mongoose.model('oportunities', OportunitySchema);
+
+module.exports.get = function (callback, limit) {
+    Oportunity.find(callback).limit(limit);
+}

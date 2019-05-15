@@ -1,0 +1,681 @@
+﻿<!doctype html>
+<html class="no-js h-100" lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
+	<!--<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
+	
+	<meta name="author" content="Vincent Queimado">
+	<meta name="description" content="Desafio de criação de API para cotação de seguro.">
+	
+    <title>Sistema de Gestão para Corretoras de Seguros</title>
+	
+	<!--[if IE]><link rel="shortcut icon" href="static/images/icosegbike.ico"><![endif]-->
+	<link rel="icon" href="../../static/images/icosegbike.png">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" type="text/css"  href="../../static/styles/app/shards-dashboards.1.1.0.min.css">
+    <link rel="stylesheet" type="text/css" href="../../static/styles/app/extras.1.1.0.min.css">
+	<link rel="stylesheet" type="text/css" href="../../static/styles/plugins/components.css">
+	<link rel="stylesheet" type="text/css" href="../../static/styles/plugins/icons/icomoon/styles.css">
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+	<script async defer src="../../static/scripts/moment.min.js"></script>
+  </head>
+  
+  <body class="h-100">
+ 
+
+    <div class="container-fluid">
+      <div class="row">
+<!-- Main Sidebar -->
+               <aside class="main-sidebar col-12 col-md-3 col-lg-2 px-0">
+          <div class="main-navbar">
+            <nav style="background-color: #0593CC!important; border-bottom: 1px solid #1299d0!important; " class="navbar align-items-stretch navbar-light bg-white flex-md-nowrap border-bottom p-0">
+              <a class="navbar-brand w-100 mr-0" href="#" style="color:#fff; line-height: 25px;">
+                <div class="d-table m-auto">
+                  <img id="main-logo" class="d-inline-block align-top mr-1" style="height: 40px; padding-right: 10px; padding-left: 10px;" src="../../static/images/app/LogoSegBike.png" alt="BikeSeguros">
+                 <!--<span style="font-size: .9rem;"  class=" d-md-inline ml-1">MENU PRINCIPAL</span>-->
+                </div>
+              </a>
+              <a style="color:#fff;" class="toggle-sidebar d-sm-inline d-md-none d-lg-none">
+                <i style="top: 0px;" class="material-icons">&#xE5C4;</i>
+              </a>
+            </nav>
+          </div>
+
+          <div class="nav-wrapper">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link" href="/seguros/app/dashboard">
+                  <i class="material-icons">home</i>
+                  <span>Início</span>
+                </a>
+              </li>
+			  
+			  <li class="nav-item">
+                <a class="nav-link " href="/seguros/app/oportunities_new">
+                  <i class="material-icons">add</i>
+                  <span>Nova Oportunidade</span>
+                </a>
+              </li>
+			  
+			  <li class="nav-item">
+                <a class="nav-link " href="/seguros/app/oportunities_list">
+                  <i class="material-icons">monetization_on</i>
+                  <span>Oportunidades</span>
+                </a>
+              </li>
+			  
+			  <li class="nav-item">
+                <a class="nav-link " href="/seguros/app/insured_list">
+                  <i class="material-icons">people</i>
+                  <span>Segurados</span>
+                </a>
+              </li>
+	
+              <li class="nav-item">
+                <a class="nav-link active" href="/seguros/app/insurances_list">
+                  <i class="material-icons">verified_user</i>
+                  <span>Seguradoras</span>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link " href="/seguros/app/profile">
+                  <i class="material-icons">account_circle</i>
+                  <span>Minha Conta</span>
+                </a>
+              </li>
+			  
+              <li class="nav-item">
+                <a class="nav-link " href="/seguros/app/support">
+                  <i class="material-icons">contact_support</i>
+                  <span>Suporte</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </aside>
+        <!-- End Main Sidebar -->
+        <main class="main-content col-lg-10 col-md-9 col-sm-12 p-0 offset-lg-2 offset-md-3">
+          <div class="main-navbar sticky-top bg-white">
+            <!-- Main Navbar -->
+                         <nav style="flex-wrap: nowrap!important;" class="navbar  navbar-light flex-md-nowrap p-0">
+							   <a class="navbar-brand w-100 mr-0" href="#" style="color:#fff; line-height: 25px;">
+					<div style="color:#3d5170; margin-left: 18px!important;" class="d-table m-auto">
+					  <img id="main-logo" class="d-inline-block align-top mr-1" style="height: 30px; padding-right: 10px; padding-left: 10px;" src="../../static/images/app/LogoSegBike2.png" alt="Bike Seguros">
+					 <!--<i class="material-icons">web</i> <span class=" d-md-inline ml-1">PAINEL DE GESTÃO </span>-->
+					</div>
+				  </a>
+              <ul class="navbar-nav border-left flex-row ">
+
+              </ul>
+              <nav class="nav">
+                <a href="#" class="nav-link nav-link-icon toggle-sidebar d-md-inline d-lg-none text-center border-left" data-toggle="collapse" data-target=".header-navbar" aria-expanded="false" aria-controls="header-navbar">
+                  <i class="material-icons">&#xE5D2;</i>
+                </a>
+              </nav>
+            </nav>
+          </div>
+          <!-- / .main-navbar -->
+          <div class="main-content-container container-fluid px-4">
+            <!-- Page Header -->
+            <div class="page-header row no-gutters py-4">
+              <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+				 <i style="font-size: 0.95rem;" class="material-icons">verified_user</i> <span style="font-size: 1rem;" class="text-uppercase page-subtitle">SEGURADORAS</span>
+                <!--<h3 class="page-title"></h3>-->
+              </div>
+            </div>
+            <!-- End Page Header -->
+			
+			
+			<div class="row">
+				<div class="col-lg-12">
+                <div class="card card-small mb-4">
+                  <div class="card-header border-bottom">
+                    <h6 class="m-0">Nova Seguradora</h6>
+                  </div>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item p-3">
+                      <div class="row">
+                        <div class="col">
+						
+							<form id="addForm" action="" method="post">
+						  
+								<h3>Dados da Seguradora</h3>
+								<fieldset>
+									<div class="form-row">
+										<div class="form-group col-md-6">
+											<label for="name">Nome da Seguradora</label>
+											<input name="insurance[name]" type="text" class="form-control required" id="name" placeholder="Digite o nome da Seguradora" value=""> 
+										</div>
+										<div class="form-group col-md-6 ">
+											<label for="register_number">CNPJ</label>
+											<input style="width: 150px;" name="insurance[register_number]" type="text" class="form-control required" id="register_number" placeholder="Digite o CNPJ" value=""> 
+										</div>
+									</div>
+								</fieldset>
+								
+								<h3>Cobertura</h3>
+								<fieldset>
+					
+									<div class="form-row">
+										<div class="form-group col-md-12">
+											<label for="risk_coverage">Cobertura de riscos</label>
+										</div>
+										
+										<div class="form-group col-md-3">
+											<div class="custom-control custom-toggle custom-toggle-sm mb-1">
+												<input type="checkbox" id="risk_coverage_loss" name="insurance[risk_coverage][loss]" class="custom-control-input" value="yes">
+												<label class="custom-control-label" for="risk_coverage_loss">Perda</label>
+											</div>
+										</div>
+
+										<div class="form-group col-md-3">
+											<div class="custom-control custom-toggle custom-toggle-sm mb-1">
+												<input type="checkbox" id="risk_coverage_theft" name="insurance[risk_coverage][theft]" class="custom-control-input" value="yes">
+												<label class="custom-control-label" for="risk_coverage_theft">Furto e roubo</label>
+											</div>
+										</div>
+										
+										<label style="margin-top: -15px; margin-bottom: 15px; margin-left: 7px;" id="answers[where]-error" for="answers[where]" class="validation-invalid-label" ></label>
+										
+									</div>
+									
+									<div class="form-row">
+										<div class="form-group col-md-12">
+											<label for="geographical_coverage">Cobertura Geográfica</label>
+										</div>
+										
+										<div class="form-group col-md-3">
+											<div class="custom-control custom-toggle custom-toggle-sm mb-1">
+												<input type="checkbox" id="geo_coverage_sp" name="insurance[geographical_coverage][SP]" class="custom-control-input" value="yes">
+												<label class="custom-control-label" for="geo_coverage_sp">SP</label>
+											</div>
+										</div>
+
+										<div class="form-group col-md-3">
+											<div class="custom-control custom-toggle custom-toggle-sm mb-1">
+												<input type="checkbox" id="geo_coverage_pe" name="insurance[geographical_coverage][PE]" class="custom-control-input" value="yes">
+												<label class="custom-control-label" for="geo_coverage_pe">PE</label>
+											</div>
+										</div>
+										
+										<div class="form-group col-md-3">
+											<div class="custom-control custom-toggle custom-toggle-sm mb-1">
+												<input type="checkbox" id="geo_coverage_pb" name="insurance[geographical_coverage][PB]" class="custom-control-input" value="yes">
+												<label class="custom-control-label" for="geo_coverage_pb">PB</label>
+											</div>
+										</div>
+										
+										<div class="form-group col-md-3">
+											<div class="custom-control custom-toggle custom-toggle-sm mb-1">
+												<input type="checkbox" id="geo_coverage_al" name="insurance[geographical_coverage][AL]" class="custom-control-input" value="yes">
+												<label class="custom-control-label" for="geo_coverage_al">AL</label>
+											</div>
+										</div>
+										
+										<label style="margin-top: -15px; margin-bottom: 15px; margin-left: 7px;" id="geographical_coverage[where]-error" for="answers[where]" class="validation-invalid-label" ></label>
+										
+									</div>
+									
+									
+								</fieldset>
+								
+								<h3>Fator de risco</h3>
+								<fieldset>
+	
+									<div class="form-row">
+										<div class="form-group col-md-12">
+											<label for="risk_factor">Fator de risco/Probabilidade (%)</label>
+											<input style="width: 100px;" name="insurance[risk_factor]" type="text" class="form-control required" id="risk_factor" placeholder="0,00" size="15" maxlength="6" value=""> 
+										</div>
+									</div>
+									
+								</fieldset>
+								
+								<h3>Cálculo de Prêmio</h3>
+								<fieldset>
+									<span class='text-muted'>Prêmio comercial = Perda esperada + Despesas + Impostos + Lucro esperado</span><br>
+				
+									<br>
+									<div class="form-row">
+										<div class="form-group col-md-12">
+											<label for="expenses">Despesas (%)</label>
+											<input style="width: 100px;" name="insurance[expenses]" type="text" class="form-control required" id="expenses" placeholder="0,00" size="15" maxlength="6" value=""> 
+										</div>
+									</div>
+									<div class="form-row">
+										<div class="form-group col-md-12">
+											<label for="taxes">Impostos (%)</label>
+											<input style="width: 100px;" name="insurance[taxes]" type="text" class="form-control required" id="taxes" placeholder="0,00" size="15" maxlength="6" value=""> 
+										</div>
+									</div>
+									<div class="form-row">
+										<div class="form-group col-md-6-12">
+											<label for="profit">Margem (%)</label>
+											<input style="width: 100px;" name="insurance[profit]" type="text" class="form-control required" id="profit" placeholder="0,00" size="15" maxlength="6" value=""> 
+										</div>
+									</div>
+									
+								</fieldset>
+                          </form>
+						  
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+			  
+            </div>
+			
+           
+            <!-- Default Light Table -->
+            <div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 mb-4">
+                <div class="card card-small blog-comments">
+                  <div class="card-header border-bottom">
+                    <h6 class="m-0">Lista de Seguradoras</h6>
+                  </div>
+				  <div id="insurances" class="card-body p-0">
+					
+					
+						<div class="blog-comments__item d-flex p-3">
+							<div class="blog-comments__content">
+								<div style="font-size: 0.8rem;" class="blog-comments__meta text-muted">
+									Carregando seguradoras...
+								</div>
+							</div>
+						</div>
+				  </div>
+                  <div class="card-footer border-top">
+                    <!-- <div class="row"> -->
+                      <!-- <div class="col text-center view-report"> -->
+                        <!-- <button type="submit" class="btn btn-white">Top</button> -->
+                      <!-- </div> -->
+                    <!-- </div> -->
+					   <div class="col text-right view-report">
+                        <a href="#">Top &uarr;</a>
+                      </div>
+                  </div>
+                </div>
+              </div>
+			  
+            </div>
+            <!-- End Default Light Table -->
+     
+          </div>
+          <footer class="main-footer d-flex p-2 px-3 bg-white border-top">
+            <ul class="nav">
+              
+            </ul>
+            <span class="copyright ml-auto my-auto mr-2">Painel de gestão - Desafio vSales 2019
+              <a href="" rel="nofollow"></a>
+            </span>
+          </footer>
+        </main>
+      </div>
+    </div>
+   
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+    <script src="https://unpkg.com/shards-ui@latest/dist/js/shards.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sharrre/2.0.1/jquery.sharrre.min.js"></script>
+    <script src="../../static/scripts/app/extras.1.1.0.min.js"></script>
+    <script src="../../static/scripts/app/shards-dashboards.1.1.0.min.js"></script>
+    <!--<script src="../../static/scripts/app/app/app-blog-overview.1.1.0.js"></script>-->
+	<script src="../../static/scripts/moment.min.js"></script>
+	<script src="../../static/scripts/app/jquery.mask.min.js"></script>
+	<script src="../../static/plugins/wizard/steps.min.js"></script>
+	<script src="../../static/plugins/validation/validate.min.js"></script>
+	<script src="../../static/plugins/bootbox/bootbox.js"></script> 
+	
+	  
+  	<script>
+	$(document).ready(function () {
+		getInsurancesList();
+	});
+		
+	//*** Check JS Plugins
+	if (!$().steps) {
+			console.warn('Warning - steps.min.js is not loaded.');
+	}
+
+	if (!$().validate) {
+			console.warn('Warning - validate.min.js is not loaded.');
+	}
+	
+	
+	function getInsurancesList(){
+			$.ajax({ 
+				type: 'GET', 
+				url: 'http://everguard.com.br:9090/seguros/api/insurances/list', 
+				//data: { get_param: 'value' }, 
+				dataType: 'json',
+				success: function (data) { 
+					var line = '';
+					var i = 1;
+					$('#insurances').empty();
+					
+					$.each(data, function(index, element) {
+						
+						var insurance_id = element._id;
+						var insurance_date = moment(element.insurance.created_date).format("DD/MM/YYYY HH:MM");
+						var insurance_name = element.insurance.name;
+						var insurance_register_number = element.insurance.register_number;
+						var insurance_expenses = element.insurance.expenses;
+						var insurance_taxes = element.insurance.taxes;
+						var insurance_profit = element.insurance.profit;
+						var insurance_risk_factor = element.insurance.risk_factor;
+						
+						var insurance_risk_coverage = '';
+						var geographical_coverage = '';
+						
+			
+						var ar_risk_coverage = [];
+						var ar_geographical_coverage = [];
+						
+						if (element.insurance.risk_coverage.loss == 'yes'){ar_risk_coverage.push('Perda')};
+						if (element.insurance.risk_coverage.theft == 'yes'){ar_risk_coverage.push('Roubo e furto')};
+						
+						if (element.insurance.geographical_coverage.SP == 'yes'){ar_geographical_coverage.push('SP')};
+						if (element.insurance.geographical_coverage.PE == 'yes'){ar_geographical_coverage.push('PE')};
+						if (element.insurance.geographical_coverage.PB == 'yes'){ar_geographical_coverage.push('PB')};
+						if (element.insurance.geographical_coverage.AL == 'yes'){ar_geographical_coverage.push('AL')};
+						
+						insurance_risk_coverage = ar_risk_coverage.join();
+						insurance_geographical_coverage = ar_geographical_coverage.join();
+						
+						//console.log(insurance_risk_coverage);
+						
+						line =  "<div class='blog-comments__item d-flex p-3' style='padding-bottom: 8px!important; padding-top: 8px!important;'>"+
+									  "<div style='width: 100%;' class='blog-comments__content'>"+
+										"<div class='blog-comments__meta text-muted'>"+
+										 "<div style='border-bottom: 1px solid #ccc'>"+
+											"<div style='width: 90%; display: inline-block;'><span style='font-size: 0.7rem; color: #555 !important;' class=''>DETALHES DA SEGURADORA</span></div>"+
+											"<div style='width: 10%; display: inline-block; text-align: right;'><span style='font-size: 0.7rem; color: #555 !important;' class=''><a style='color: #555 !important;' href='#' onclick='editInsurance(\"" + insurance_id + "\",\"" + insurance_name + "\" )'><i style='top: 1px;'class='material-icons'>create</i></a><a style='color: #555 !important;' href='#' onclick='delInsurance(\"" + insurance_id + "\",\"" + insurance_name + "\" )'><i style='top: 1px;'class='material-icons'>delete</i></a></span></div>"+
+										  "</div>"+
+										  "<div style=''><span style='font-size: 0.7rem;' class='text-muted'>DATA: " + insurance_date + "</span></div>"+
+										  "<div style=''><span style='font-size: 0.7rem;' class='text-muted'>NOME: " + insurance_name + "</span></div>"+
+										  "<div style=''><span style='font-size: 0.7rem;' class='text-muted'>CNPJ: " + insurance_register_number + "</span></div>"+
+										  "<div style='border-bottom: 1px solid #ccc'>"+
+											"<div style='width: 90%; display: inline-block;'><span style='font-size: 0.7rem; color: #555 !important;' class=''>DETALHES DE COBERTURA</span></div>"+
+											"<div style='width: 10%; display: inline-block; text-align: right;'><span style='font-size: 0.7rem; color: #555 !important;' class=''></span></div>"+
+										  "</div>"+
+											"<div style=''><span style='font-size: 0.7rem;' class='text-muted'>Indenização: " + insurance_risk_coverage + "</span></div>"+
+											"<div style=''><span style='font-size: 0.7rem;' class='text-muted'>cobertura territorial : " + insurance_geographical_coverage + "</span></div>"+
+										  "<div style='border-bottom: 1px solid #ccc'>"+
+											"<div style='width: 90%; display: inline-block;'><span style='font-size: 0.7rem; color: #555 !important;' class=''>COMPOSIÇÃO DO PRÊMIO</span></div>"+
+											"<div style='width: 10%; display: inline-block; text-align: right;'><span style='font-size: 0.7rem; color: #555 !important;' class=''></span></div>"+
+										  "</div>"+
+											"<div style=''><span style='font-size: 0.7rem;' class='text-muted'>Probabilidade: " + insurance_risk_factor + "% (" + (1000*(insurance_risk_factor/100))+  "/1000 ano) </span></div>"+
+											"<div style=''><span style='font-size: 0.7rem;' class='text-muted'>Despesas: " + insurance_expenses + "% </span></div>"+
+											"<div style=''><span style='font-size: 0.7rem;' class='text-muted'>Impostos: " + insurance_taxes + "% </span></div>"+
+											"<div style=''><span style='font-size: 0.7rem;' class='text-muted'>Margem: " + insurance_profit + "% </span></div>"+
+										"</div>"+
+										
+										"<div style='text-align: center;width: 100%;margin-top: 10px;' class='blog-comments__actions'>"+
+									
+										 "</div>"+
+									  "</div>"+
+									"</div>";
+									
+						$('#insurances').append(line);
+						
+						i++;
+					
+					});
+					
+					if (i == 1){
+						line = "<div class='blog-comments__item d-flex p-3'>"+
+							"<div class='blog-comments__content'>"+
+								"<div style='font-size: 0.8rem;' class='blog-comments__meta text-muted'>"+
+									"Nenhuma seguradora encontrada!"+
+								"</div>"+
+							"</div>"+
+						"</div>";
+						$('#insurances').append(line);
+					}
+					
+					
+				}
+			});
+		}
+		
+	function getKeyByValue(object, value) {
+	  return Object.keys(object).find(key => object[key] == value);
+	}
+
+
+
+	
+	
+	//*** Wizard Form
+	var form_addclient = $("#addForm").show();
+ 
+	form_addclient.steps({
+		headerTag: "h3",
+		bodyTag: "fieldset",
+		transitionEffect: "slideLeft",
+		titleTemplate: '<span class="number">#index#</span> #title#',
+		labels: {
+					previous: '<i class="icon-arrow-left13 mr-2" /> Anterior',
+					next: 'Próximo <i class="icon-arrow-right14 ml-2" />',
+					finish: 'Cadastrar <i class="icon-plus2 ml-2" />'
+			},
+			transitionEffect: 'fade',
+			autoFocus: true,
+			onStepChanging: function (event, currentIndex, newIndex) {
+
+					// Allways allow previous action even if the current form is not valid!
+					if (currentIndex > newIndex) {
+							return true;
+					}
+
+					// Needed in some cases if the user went back (clean up)
+					if (currentIndex < newIndex) {
+
+							// To remove error styles
+							form_addclient.find('.body:eq(' + newIndex + ') label.error').remove();
+							form_addclient.find('.body:eq(' + newIndex + ') .error').removeClass('error');
+					}
+
+					form_addclient.validate().settings.ignore = ':disabled,:hidden';
+					return form_addclient.valid();
+			},
+			onFinishing: function (event, currentIndex) {
+					form_addclient.validate().settings.ignore = ':disabled';
+					return form_addclient.valid();
+			},
+			onFinished: function (event, currentIndex) {
+					//alert('Cadastrado!');
+					form_addclient.submit();
+			}
+	});
+	
+		//*** Initialize validation
+		form_addclient.validate({
+				ignore: 'input[type=hidden], .select2-search__field', // ignore hidden fields
+				errorClass: 'validation-invalid-label',
+				highlight: function(element, errorClass) {
+						$(element).removeClass(errorClass);
+				},
+				unhighlight: function(element, errorClass) {
+						$(element).removeClass(errorClass);
+				},
+
+				// Different components require proper error label placement
+				errorPlacement: function(error, element) {
+
+					// Unstyled checkboxes, radios
+					if (element.parents().hasClass('form-check')) {
+						error.appendTo( element.parents('.form-check').parent() );
+					}
+
+					// Input with icons and Select2
+					else if (element.parents().hasClass('form-group-feedback') || element.hasClass('select2-hidden-accessible')) {
+						error.appendTo( element.parent() );
+					}
+
+					// Input group, styled file input
+					else if (element.parent().is('.uniform-uploader, .uniform-select') || element.parents().hasClass('input-group')) {
+						error.appendTo( element.parent().parent() );
+					}
+
+					// Other elements
+					else {
+						error.insertAfter(element);
+					}
+				},
+				rules: {
+					"insurance[name]": {
+						required: true,
+						minlength: 1,
+						maxlength: 64
+					},
+					"insurance[register_number]": {
+						required: true,
+						minlength: 1,
+						maxlength: 18
+					},
+					"insurance[expenses]": {
+						required: true
+					},
+					"insurance[taxes]": {
+						required: true
+					},
+					"insurance[profit]": {
+						required: true
+					},
+					"insurance[risk_factor]": {
+						required: true
+					}
+				},
+			messages: {
+				"insurance[name]": {
+					required: 'Nome de Seguradora obligatório'
+				 },
+				"insurance[register_number]": {
+					required: 'Numéro de CNPJ obligatório',
+					minlength: jQuery.validator.format("CNPJ inválido")
+				},
+				"insurance[expenses]": {
+					required: 'Despesas obligatório'
+				},
+				"insurance[taxes]": {
+					required: 'Impostos obligatório'
+				},
+				"insurance[profit]": {
+					required: 'Margem obligatório'
+				},
+				"insurance[risk_factor]": {
+					required: true
+				}
+			}
+		});
+		
+	$("#addForm").submit(function(e) {
+		saveInsurance();
+		e.preventDefault(); // avoid to execute the actual submit of the form.
+	});
+	
+	function saveInsurance(){
+		addInsurance(function(result){
+			if (result){
+				$('#successNotif').fadeIn('slow').delay(5000).fadeOut('slow');
+				goBack();
+				getInsurancesList();				
+			}
+		});
+	}
+	
+			
+	function addInsurance(result){
+		$.ajax({
+			type: "POST",
+			url: "/seguros/api/insurances/add",
+			data: $("#addForm").serialize(), // serializes the form's elements.
+			success: function(data)
+			{	
+				result(data['_id']);
+			}
+		});
+	}
+	
+	
+	function goBack(){
+		$('#addForm')[0].reset();
+		$('#addForm-t-0').click();
+		$(window).scrollTop(0);
+	}
+	
+	
+	function delInsurance(id, insurance_name){
+			//alert('Deseja exluir definitivamente a oportunidade de ' + client + ' ?');
+			
+			bootbox.confirm({
+                title: 'Confirmação',
+                message: 'Deseja exluir definitivamente a seguradora  ' + insurance_name + ' ?',
+                buttons: {
+                    confirm: {
+                        label: 'Sim',
+                        className: 'btn-primary'
+                    },
+                    cancel: {
+                        label: 'Não',
+                        className: 'btn-link'
+                    }
+                },
+                callback: function (result) {
+
+					if (result){
+						$.ajax({ 
+							type: 'DELETE', 
+							url: 'http://everguard.com.br:9090/seguros/api/insurances/delete/'+id, 
+							//data: { get_param: 'value' }, 
+							dataType: 'json',
+							success: function (data) { 
+								
+								bootbox.alert({
+									title: 'Confirmação',
+									message: 'A seguradora ' + insurance_name + ' foi excluida com sucesso!'
+								});
+								
+								getInsurancesList();
+							}
+						});
+					}
+					
+	
+                }
+            });
+			
+		}
+	
+	
+	
+	//*** Uppercase Format
+	$('#name').blur(function(){
+		this.value = this.value.toUpperCase();
+	});
+	
+	$('#name').keyup(function(){
+		this.value = this.value.toUpperCase();
+	});
+	
+	$('#register_number').mask('00.000.000/0000-00', {reverse: true});
+
+	$('#expenses').mask("##0,00", {reverse: true});
+	$('#taxes').mask("##0,00", {reverse: true});
+	$('#profit').mask("##0,00", {reverse: true});
+	
+	</script>
+		
+  </body>
+</html>

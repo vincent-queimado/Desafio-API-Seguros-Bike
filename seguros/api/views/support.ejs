@@ -1,0 +1,236 @@
+﻿<!doctype html>
+<html class="no-js h-100" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
+	<!--<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
+	
+	<meta name="author" content="Vincent Queimado">
+	<meta name="description" content="Desafio de criação de API para cotação de seguro.">
+	
+    <title>Sistema de Gestão para Corretoras de Seguros</title>
+	
+	<!--[if IE]><link rel="shortcut icon" href="static/images/icosegbike.ico"><![endif]-->
+	<link rel="icon" href="../../static/images/icosegbike.png">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" type="text/css"  href="../../static/styles/app/shards-dashboards.1.1.0.min.css">
+    <link rel="stylesheet" type="text/css" href="../../static/styles/app/extras.1.1.0.min.css">
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+	<script async defer src="../../static/scripts/moment.min.js"></script>
+  </head>
+  
+  <body class="h-100">
+ 
+
+    <div class="container-fluid">
+      <div class="row">
+   <!-- Main Sidebar -->
+               <aside class="main-sidebar col-12 col-md-3 col-lg-2 px-0">
+          <div class="main-navbar">
+            <nav style="background-color: #0593CC!important; border-bottom: 1px solid #1299d0!important; " class="navbar align-items-stretch navbar-light bg-white flex-md-nowrap border-bottom p-0">
+              <a class="navbar-brand w-100 mr-0" href="#" style="color:#fff; line-height: 25px;">
+                <div class="d-table m-auto">
+                  <img id="main-logo" class="d-inline-block align-top mr-1" style="height: 40px; padding-right: 10px; padding-left: 10px;" src="../../static/images/app/LogoSegBike.png" alt="BikeSeguros">
+                 <!--<span style="font-size: .9rem;"  class=" d-md-inline ml-1">MENU PRINCIPAL</span>-->
+                </div>
+              </a>
+              <a style="color:#fff;" class="toggle-sidebar d-sm-inline d-md-none d-lg-none">
+                <i style="top: 0px;" class="material-icons">&#xE5C4;</i>
+              </a>
+            </nav>
+          </div>
+
+          <div class="nav-wrapper">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link " href="/seguros/app/dashboard">
+                  <i class="material-icons">home</i>
+                  <span>Início</span>
+                </a>
+              </li>
+			  
+			  <li class="nav-item">
+                <a class="nav-link " href="/seguros/app/oportunities_new">
+                  <i class="material-icons">add</i>
+                  <span>Nova Oportunidade</span>
+                </a>
+              </li>
+			  
+			<li class="nav-item">
+                <a class="nav-link " href="/seguros/app/oportunities_list">
+                  <i class="material-icons">monetization_on</i>
+                  <span>Oportunidades</span>
+                </a>
+              </li>
+			  
+			  <li class="nav-item">
+                <a class="nav-link " href="/seguros/app/insured_list">
+                  <i class="material-icons">people</i>
+                  <span>Segurados</span>
+                </a>
+              </li>
+	
+              <li class="nav-item">
+                <a class="nav-link " href="/seguros/app/insurances_list">
+                  <i class="material-icons">verified_user</i>
+                  <span>Seguradoras</span>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link " href="/seguros/app/profile">
+                  <i class="material-icons">account_circle</i>
+                  <span>Minha Conta</span>
+                </a>
+              </li>
+			  
+              <li class="nav-item">
+                <a class="nav-link active" href="/seguros/app/support">
+                  <i class="material-icons">contact_support</i>
+                  <span>Suporte</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </aside>
+        <!-- End Main Sidebar -->
+        <main class="main-content col-lg-10 col-md-9 col-sm-12 p-0 offset-lg-2 offset-md-3">
+          <div class="main-navbar sticky-top bg-white">
+            <!-- Main Navbar -->
+             <nav style="flex-wrap: nowrap!important;" class="navbar  navbar-light flex-md-nowrap p-0">
+				   <a class="navbar-brand w-100 mr-0" href="#" style="color:#fff; line-height: 25px;">
+					<div style="color:#3d5170; margin-left: 18px!important;" class="d-table m-auto">
+					  <img id="main-logo" class="d-inline-block align-top mr-1" style="height: 30px; padding-right: 10px; padding-left: 10px;" src="../../static/images/app/LogoSegBike2.png" alt="Bike Seguros">
+					 <!--<i class="material-icons">web</i> <span class=" d-md-inline ml-1">PAINEL DE GESTÃO </span>-->
+					</div>
+				  </a>
+              <ul class="navbar-nav border-left flex-row ">
+
+                <!--<li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle text-nowrap px-3" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    <img class="user-avatar rounded-circle mr-2" src="../../static/images/app/avatars/0.jpg" alt="User Avatar">
+                    <span class="d-none d-md-inline-block">Sierra Brooks</span>
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-small">
+                    <a class="dropdown-item" href="user-profile-lite.html">
+                      <i class="material-icons">&#xE7FD;</i> Profile</a>
+                    <a class="dropdown-item" href="components-blog-posts.html">
+                      <i class="material-icons">vertical_split</i> Blog Posts</a>
+                    <a class="dropdown-item" href="add-new-post.html">
+                      <i class="material-icons">note_add</i> Add New Post</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item text-danger" href="#">
+                      <i class="material-icons text-danger">&#xE879;</i> Logout </a>
+                  </div>
+                </li>-->
+              </ul>
+              <nav class="nav">
+                <a href="#" class="nav-link nav-link-icon toggle-sidebar d-md-inline d-lg-none text-center border-left" data-toggle="collapse" data-target=".header-navbar" aria-expanded="false" aria-controls="header-navbar">
+                  <i class="material-icons">&#xE5D2;</i>
+                </a>
+              </nav>
+            </nav>
+          </div>
+          <!-- / .main-navbar -->
+          <div class="main-content-container container-fluid px-4">
+            <!-- Page Header -->
+            <div class="page-header row no-gutters py-4">
+              <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+                <i style="font-size: 0.95rem;" class="material-icons">contact_support</i> <span style="font-size: 1rem;" class="text-uppercase page-subtitle">SUPORTE</span>
+                <!--<h3 class="page-title"></h3>-->
+              </div>
+            </div>
+            <!-- End Page Header -->
+			
+           
+            <div class="row">
+				
+				 <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
+                <div class="card card-small">
+                  <div class="card-header border-bottom">
+                    <h6 class="m-0">Api's</h6>
+                  </div>
+                  <div class="card-body p-0">
+                    <ul id="Api's" class="list-group list-group-small list-group-flush">
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/oportunities </li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/oportunities/list </li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/oportunities/list_pending </li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/oportunities/list_accepted </li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/oportunities/list_refused</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/oportunities/latest</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/oportunities/latest/:limit</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/oportunities/count</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/oportunities/count_pending</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/oportunities/count_accepted</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/oportunities/count_refused</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/oportunities/add</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/oportunities/add/insuranceform/:id</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/oportunities/add/insurance/:id</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/oportunities/view/:id</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/oportunities/update/:id</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/oportunities/pending/:id</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/oportunities/accepted/:id</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/oportunities/refused/:id</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/oportunities/delete/:id</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/bikes/list</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/bikes/add</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/bikes/latest</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/bikes/latest/:limit</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/bikes/view/:id</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/bikes/delete/:id</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/clients/list</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/clients/add</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/clients/latest</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/clients/latest/:limit</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/clients/view/:id</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/clients/delete/:id</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/insurancesforms/list</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/insurancesforms/add</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/insurancesforms/latest</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/insurancesforms/latest/:limit</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/insurancesforms/view/:id</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/insurancesforms/delete/:id</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/insurances/list</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/insurances/add</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/insurances/latest</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/insurances/latest/:limit</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/insurances/view/:id</li>
+						<li style="font-size: 0.7rem;" class="list-group-item d-flex px-3"> http://everguard.com.br:9090/seguros/api/insurances/delete/:id</li>
+                    </ul>
+                  </div>
+                  <div class="card-footer border-top">
+     
+                  </div>
+                </div>
+              </div>
+			  
+            </div>
+     
+          </div>
+          <footer class="main-footer d-flex p-2 px-3 bg-white border-top">
+            <ul class="nav">
+              
+            </ul>
+            <span class="copyright ml-auto my-auto mr-2">Painel de gestão - Desafio vSales 2019
+              <a href="" rel="nofollow"></a>
+            </span>
+          </footer>
+        </main>
+      </div>
+    </div>
+   
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+    <script src="https://unpkg.com/shards-ui@latest/dist/js/shards.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sharrre/2.0.1/jquery.sharrre.min.js"></script>
+    <script src="../../static/scripts/app/extras.1.1.0.min.js"></script>
+    <script src="../../static/scripts/app/shards-dashboards.1.1.0.min.js"></script>
+    <!--<script src="../../static/scripts/app/app/app-blog-overview.1.1.0.js"></script>-->
+  </body>
+</html>

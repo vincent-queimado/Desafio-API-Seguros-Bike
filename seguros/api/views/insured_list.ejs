@@ -1,0 +1,371 @@
+﻿<!doctype html>
+<html class="no-js h-100" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
+	<!--<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
+	
+	<meta name="author" content="Vincent Queimado">
+	<meta name="description" content="Desafio de criação de API para cotação de seguro.">
+	
+    <title>Sistema de Gestão para Corretoras de Seguros</title>
+	
+	<!--[if IE]><link rel="shortcut icon" href="static/images/icosegbike.ico"><![endif]-->
+	<link rel="icon" href="../../static/images/icosegbike.png">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" type="text/css"  href="../../static/styles/app/shards-dashboards.1.1.0.min.css">
+    <link rel="stylesheet" type="text/css" href="../../static/styles/app/extras.1.1.0.min.css">
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+	<script async defer src="../../static/scripts/moment.min.js"></script>
+  </head>
+  
+  <body class="h-100">
+ 
+
+    <div class="container-fluid">
+      <div class="row">
+      <!-- Main Sidebar -->
+               <aside class="main-sidebar col-12 col-md-3 col-lg-2 px-0">
+          <div class="main-navbar">
+            <nav style="background-color: #0593CC!important; border-bottom: 1px solid #1299d0!important; " class="navbar align-items-stretch navbar-light bg-white flex-md-nowrap border-bottom p-0">
+              <a class="navbar-brand w-100 mr-0" href="#" style="color:#fff; line-height: 25px;">
+                <div class="d-table m-auto">
+                  <img id="main-logo" class="d-inline-block align-top mr-1" style="height: 40px; padding-right: 10px; padding-left: 10px;" src="../../static/images/app/LogoSegBike.png" alt="BikeSeguros">
+                 <!--<span style="font-size: .9rem;"  class=" d-md-inline ml-1">MENU PRINCIPAL</span>-->
+                </div>
+              </a>
+              <a style="color:#fff;" class="toggle-sidebar d-sm-inline d-md-none d-lg-none">
+                <i style="top: 0px;" class="material-icons">&#xE5C4;</i>
+              </a>
+            </nav>
+          </div>
+
+          <div class="nav-wrapper">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link " href="/seguros/app/dashboard">
+                  <i class="material-icons">home</i>
+                  <span>Início</span>
+                </a>
+              </li>
+			  
+			  <li class="nav-item">
+                <a class="nav-link " href="/seguros/app/oportunities_new">
+                  <i class="material-icons">add</i>
+                  <span>Nova Oportunidade</span>
+                </a>
+              </li>
+			  
+			  <li class="nav-item">
+                <a class="nav-link " href="/seguros/app/oportunities_list">
+                  <i class="material-icons">monetization_on</i>
+                  <span>Oportunidades</span>
+                </a>
+              </li>
+			  
+			  <li class="nav-item">
+                <a class="nav-link active" href="/seguros/app/insured_list">
+                  <i class="material-icons">people</i>
+                  <span>Segurados</span>
+                </a>
+              </li>
+	
+              <li class="nav-item">
+                <a class="nav-link " href="/seguros/app/insurances_list">
+                  <i class="material-icons">verified_user</i>
+                  <span>Seguradoras</span>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link " href="/seguros/app/profile">
+                  <i class="material-icons">account_circle</i>
+                  <span>Minha Conta</span>
+                </a>
+              </li>
+			  
+              <li class="nav-item">
+                <a class="nav-link " href="/seguros/app/support">
+                  <i class="material-icons">contact_support</i>
+                  <span>Suporte</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </aside>
+        <!-- End Main Sidebar -->
+        <main class="main-content col-lg-10 col-md-9 col-sm-12 p-0 offset-lg-2 offset-md-3">
+          <div class="main-navbar sticky-top bg-white">
+            <!-- Main Navbar -->
+             <nav style="flex-wrap: nowrap!important;" class="navbar  navbar-light flex-md-nowrap p-0">
+					   <a class="navbar-brand w-100 mr-0" href="#" style="color:#fff; line-height: 25px;">
+					<div style="color:#3d5170; margin-left: 18px!important;" class="d-table m-auto">
+					  <img id="main-logo" class="d-inline-block align-top mr-1" style="height: 30px; padding-right: 10px; padding-left: 10px;" src="../../static/images/app/LogoSegBike2.png" alt="Bike Seguros">
+					 <!--<i class="material-icons">web</i> <span class=" d-md-inline ml-1">PAINEL DE GESTÃO </span>-->
+					</div>
+				  </a>
+              <ul class="navbar-nav border-left flex-row ">
+
+                <!--<li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle text-nowrap px-3" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    <img class="user-avatar rounded-circle mr-2" src="../../static/images/app/avatars/0.jpg" alt="User Avatar">
+                    <span class="d-none d-md-inline-block">Sierra Brooks</span>
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-small">
+                    <a class="dropdown-item" href="user-profile-lite.html">
+                      <i class="material-icons">&#xE7FD;</i> Profile</a>
+                    <a class="dropdown-item" href="components-blog-posts.html">
+                      <i class="material-icons">vertical_split</i> Blog Posts</a>
+                    <a class="dropdown-item" href="add-new-post.html">
+                      <i class="material-icons">note_add</i> Add New Post</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item text-danger" href="#">
+                      <i class="material-icons text-danger">&#xE879;</i> Logout </a>
+                  </div>
+                </li>-->
+              </ul>
+              <nav class="nav">
+                <a href="#" class="nav-link nav-link-icon toggle-sidebar d-md-inline d-lg-none text-center border-left" data-toggle="collapse" data-target=".header-navbar" aria-expanded="false" aria-controls="header-navbar">
+                  <i class="material-icons">&#xE5D2;</i>
+                </a>
+              </nav>
+            </nav>
+          </div>
+          <!-- / .main-navbar -->
+          <div class="main-content-container container-fluid px-4">
+            <!-- Page Header -->
+            <div class="page-header row no-gutters py-4">
+              <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+                <i style="font-size: 0.95rem;" class="material-icons">people</i> <span style="font-size: 1rem;" class="text-uppercase page-subtitle">SEGURADOS</span>
+				<!--<h3 class="page-title"></h3>-->
+              </div>
+            </div>
+            <!-- End Page Header -->
+			
+           
+            <!-- Default Light Table -->
+            <div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 mb-4">
+                <div class="card card-small blog-comments">
+                  <div class="card-header border-bottom">
+                    <h6 class="m-0">Lista de Segurados</h6>
+                  </div>
+				  <div id="quotes" class="card-body p-0">
+					
+					
+						<div class="blog-comments__item d-flex p-3">
+							<div class="blog-comments__content">
+								<div style="font-size: 0.8rem;" class="blog-comments__meta text-muted">
+									Carregando segurados...
+								</div>
+							</div>
+						</div>
+				  </div>
+                  <div class="card-footer border-top">
+                    <!-- <div class="row"> -->
+                      <!-- <div class="col text-center view-report"> -->
+                        <!-- <button type="submit" class="btn btn-white">Top</button> -->
+                      <!-- </div> -->
+                    <!-- </div> -->
+					   <div class="col text-right view-report">
+                        <a href="#">Top &uarr;</a>
+                      </div>
+                  </div>
+                </div>
+              </div>
+			  
+            </div>
+            <!-- End Default Light Table -->
+     
+          </div>
+          <footer class="main-footer d-flex p-2 px-3 bg-white border-top">
+            <ul class="nav">
+              
+            </ul>
+            <span class="copyright ml-auto my-auto mr-2">Painel de gestão - Desafio vSales 2019
+              <a href="" rel="nofollow"></a>
+            </span>
+          </footer>
+        </main>
+      </div>
+    </div>
+   
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+    <script src="https://unpkg.com/shards-ui@latest/dist/js/shards.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sharrre/2.0.1/jquery.sharrre.min.js"></script>
+    <script src="../../static/scripts/app/extras.1.1.0.min.js"></script>
+    <script src="../../static/scripts/app/shards-dashboards.1.1.0.min.js"></script> 
+    <!-- <script src="../../static/scripts/app/app/app-blog-overview.1.1.0.js"></script> -->
+	
+	<script>
+	
+		$(document).ready(function () {
+			getInsuredList();
+		});
+		
+		
+		function getInsuredList(){
+			$.ajax({ 
+				type: 'GET', 
+				url: 'http://everguard.com.br:9090/seguros/api/oportunities/list_accepted', 
+				//data: { get_param: 'value' }, 
+				dataType: 'json',
+				success: function (data) { 
+					var i = 1;
+					$('#quotes').empty();
+					
+					$.each(data, function(index, element) {
+						
+						var oportunity_id = element._id;
+						var oportunity_date = moment(element.oportunity.created_date).format("DD/MM/YYYY HH:mm");
+						var oportunity_form	= element.oportunity.insuranceform;
+						var oportunity_insurance = element.oportunity.insurance;
+						var oportunity_prime = parseFloat(element.oportunity.prime);
+						var oportunity_payment = parseInt(element.oportunity.payment);
+						
+						var client_id = element.oportunity.client;
+						var client_name = '';
+						var client_city = '';
+						var client_state = '';
+						
+						var bike_id = element.oportunity.bike;
+						var bike_type = '';
+						var bike_value = '';
+						
+						getBikeDatas(bike_id, function(bikeDatas){
+							bike_type = bikeDatas.bike.type;
+							bike_value = bikeDatas.bike.value;
+							
+							getClientDatas(client_id,function(clientDatas){
+								client_name = clientDatas.client.name;
+								client_city = clientDatas.client.address.city;
+								client_state = clientDatas.client.address.state;
+								
+								var line =  "<div class='blog-comments__item d-flex p-3' style='padding-bottom: 8px!important; padding-top: 8px!important;'>"+
+									  "<div style='width: 100%;' class='blog-comments__content'>"+
+										"<div class='blog-comments__meta text-muted'>"+
+										  "<span style='font-size: 0.7rem;' class='text-muted'>Segurado: " + client_name + "</span><br>"+
+										  "<span style='font-size: 0.7rem;' class='text-muted'>Seguradora: SEGURADORA A</span><br>"+
+										  "<span style='font-size: 0.7rem;' class='text-muted'>Tipo de bicicleta: " + bike_type + "</span><br>"+
+										  "<span style='font-size: 0.7rem;' class='text-muted'>Local de risco: " + client_city + "-" + client_state + "</span><br>"+
+										  "<span style='font-size: 0.7rem;' class='text-muted'>Contrato: R$ " + oportunity_prime.toFixed(2).replace(".",",") + "</span><br>"+
+										  "<span style='font-size: 0.7rem;' class='text-muted'>Parcelas: "+ oportunity_payment + " x "+ (oportunity_prime/oportunity_payment).toFixed(2).replace(".",",")  + "</span><br>"+
+										"</div>"+
+										
+										"<div style='text-align: center;width: 100%;margin-top: 10px;' class='blog-comments__actions'>"+
+										  "<div style='width: 98%;' class='btn-group btn-group-sm'>"+
+										  
+											"<button style='width: 50%;' type='button' class='btn btn-white' onclick='pending(\"" + oportunity_id + "\",\"" + client_name + "\" )'>"+
+											  "<span class='text-light'>"+
+												"<i style='top: 1px;' class='material-icons'>undo</i> "+
+											  "</span> Oportunidade </button>"+
+											  
+											"<button style='width: 50%;' type='button' class='btn btn-white' onclick='recused(\"" + oportunity_id + "\",\"" + client_name + "\" )'>"+
+											  "<span class='text-danger'>"+
+												"<i style='top: 1px;'class='material-icons'>clear</i> "+
+											  "</span> Cancelar Seguro</button>"+
+											  
+			
+										  "</div>"+
+										 "</div>"+
+									  "</div>"+
+									"</div>";
+									
+							$('#quotes').append(line);
+							
+							});
+						});
+
+						i++;
+					
+					});
+					
+					if (i == 1){
+						var line = "<div class='blog-comments__item d-flex p-3'>"+
+							"<div class='blog-comments__content'>"+
+								"<div style='font-size: 0.8rem;' class='blog-comments__meta text-muted'>"+
+									"Nenhuma oportunidade encontrada!"+
+								"</div>"+
+							"</div>"+
+						"</div>";
+					}
+					$('#quotes').append(line);
+					
+				}
+			});
+		}
+		
+		function getBikeDatas(id, datas){
+			$.ajax({ 
+				type: 'GET', 
+				url: 'http://everguard.com.br:9090/seguros/api/bikes/view/'+id, 
+				dataType: 'json',
+				success: function (data) { 
+					datas(data);
+				}
+			});
+		}
+		
+		function getClientDatas(id, datas){
+			$.ajax({ 
+				type: 'GET', 
+				url: 'http://everguard.com.br:9090/seguros/api/clients/view/'+id, 
+				dataType: 'json',
+				success: function (data) { 
+					datas(data);
+				}
+			});
+		}
+		
+		function getInsuranceDatas(id, datas){
+			$.ajax({ 
+				type: 'GET', 
+				url: 'http://everguard.com.br:9090/seguros/api/insurances/view/'+id, 
+				dataType: 'json',
+				success: function (data) { 
+					datas(data);
+				}
+			});
+		}
+		
+		
+		function pending(id, client){
+			alert('Deseja realmente desfazer o seguro e devolver a cotação para lista de Oportunidades?');
+			
+			$.ajax({ 
+				type: 'PUT', 
+				url: 'http://everguard.com.br:9090/seguros/api/oportunities/pending/'+id, 
+				//data: { get_param: 'value' }, 
+				dataType: 'json',
+				success: function (data) { 
+					getInsuredList();
+				}
+			});
+		
+		}
+		
+		function recused(id, client){
+			alert('O cliente ' + client + ' deseja realmente cancelar o seguro?');
+			
+			$.ajax({ 
+				type: 'PUT', 
+				url: 'http://everguard.com.br:9090/seguros/api/oportunities/refused/'+id, 
+				//data: { get_param: 'value' }, 
+				dataType: 'json',
+				success: function (data) { 
+					alert('Cancelar!');
+					getInsuredList();
+				}
+			});
+		}
+		
+	</script>
+  </body>
+</html>
