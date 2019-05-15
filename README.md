@@ -1,6 +1,6 @@
 # Desafio de criação de API para seguradoras de bicicletas
 
-Demo https://www.everguard.com.br:9090
+Desafio de API demo: http://www.everguard.com.br:9090
 
 Instalação
 
