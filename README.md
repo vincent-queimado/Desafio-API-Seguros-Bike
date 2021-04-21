@@ -1,6 +1,4 @@
 
-![Desafio](http://everguard.com.br:9090/static/images/app/LogoSegBike2.png)
-
 ![version](https://img.shields.io/badge/version-1.0.0-blue.svg?longCache=true&style=flat-square)
 
 # Rascunho de de API para seguradoras de bike
