@@ -3,9 +3,9 @@
 
 ![version](https://img.shields.io/badge/version-1.0.0-blue.svg?longCache=true&style=flat-square)
 
-# Desafio de criação de API para seguradoras de bicicletas
+# Rascunho de de API para seguradoras de bike
 
-Desafio de API demo: http://www.everguard.com.br:9090
+Rascunho de API demo: http://www.everguard.com.br:9090
 
 Instalação
 
